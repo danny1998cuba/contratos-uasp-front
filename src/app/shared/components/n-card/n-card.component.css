@@ -1,0 +1,108 @@
+/* Hexagon-n-card n-Card */
+.n-card {
+    position: relative;
+    min-width: 320px;
+    height: 440px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 5px 15px rgba(0, 0, 0, 0.3),
+        -5px -5px 15px rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin: 30px;
+}
+
+.n-card .box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.n-card .box::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 110%;
+    height: 60%;
+    background: var(--third-color);
+    opacity: .2;
+    transform: skewY(35deg);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.n-card:hover .box {
+    transform: translateY(-50px);
+    box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5);
+}
+
+.n-card .box .content {
+    padding: 20px;
+    text-align: center;
+    min-height: 75%;
+    max-height: 90%;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.n-card .box .content .icon {
+    width: 40%;
+    height: 40%;
+}
+
+.n-card .box .content .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.n-card .box .content h3 {
+    font-size: 1.6rem;
+    color: var(--font-color);
+    z-index: 1;
+}
+
+.n-card .box .content p {
+    font-size: .9rem;
+    font-weight: 300;
+    color: var(--font-color);
+    z-index: 1;
+}
+
+.n-card .box .content p small {
+    font-size: .7rem;
+    font-weight: 200;
+}
+
+.n-card .box .content a {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--font-color);
+    margin-top: 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 400;
+    color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.n-card .box .content a:hover {
+    color: var(--third-color);
+}
+
+/* End of Hexagon-n-card n-card */

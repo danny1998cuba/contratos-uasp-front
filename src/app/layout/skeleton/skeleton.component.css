@@ -1,0 +1,7 @@
+.main-container {
+    background: var(--secondary-color);
+    margin: 0 2rem;
+    border-radius: 2rem;
+    padding: 2rem;
+    color: var(--font-color);
+}

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import * as fromComponents from './components/index';
 import * as fromPipes from './pipes/index';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({

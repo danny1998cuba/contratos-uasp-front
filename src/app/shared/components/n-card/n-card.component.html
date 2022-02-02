@@ -1,0 +1,18 @@
+<div class="n-card">
+    <div class="box">
+        <div class="content">
+            <div class="icon"><img [src]="data.image" alt=""></div>
+
+            <div class="info">
+                <h3>{{data.title}}</h3>
+                <p>
+                    {{data.description}}<br>
+                    <small *ngIf="data.small">{{data.small}}</small>
+                </p>
+            </div>
+
+            
+            <a [routerLink]="data.router_Link">Gestionar</a>
+        </div>
+    </div>
+</div>

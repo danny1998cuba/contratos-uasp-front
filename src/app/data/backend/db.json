@@ -1,3 +1,100 @@
 {
-
+  "providers": [
+    {
+      "id": 0,
+      "nombre": "Salud Publica"
+    },
+    {
+      "id": 1,
+      "nombre": "Empresa Porcino"
+    },
+    {
+      "id": 2,
+      "nombre": "Producciones Textiles"
+    },
+    {
+      "id": 3,
+      "nombre": "Almacenes Universales"
+    }
+  ],
+  "users": [
+    {
+      "username": "danny98cuba",
+      "password": "123",
+      "nombre": "Daniel",
+      "apellidoP": "Gonzalez",
+      "apellidoM": "Cuetara",
+      "email": null,
+      "telefono": null,
+      "enabled": true,
+      "photo": "no-img"
+    },
+    {
+      "username": "user",
+      "password": "123",
+      "nombre": "Usuario",
+      "apellidoP": "Simple",
+      "apellidoM": "Gestor",
+      "email": null,
+      "telefono": null,
+      "enabled": true,
+      "photo": "no-img"
+    }
+  ],
+  "roles": [
+    {
+      "authority": "ROLE_ADMIN",
+      "username": "danny98cuba"
+    },
+    {
+      "authority": "ROLE_USER",
+      "username": "user"
+    }
+  ],
+  "contratos": [
+    {
+      "id": 0,
+      "id_proveedor": 0,
+      "id_dictamen": 0,
+      "numero": null,
+      "duracion": null,
+      "fecha_firma": null,
+      "fecha_venc": null,
+      "observaciones": null
+    },
+    {
+      "id": 1,
+      "id_proveedor": 3,
+      "id_dictamen": null,
+      "numero": null,
+      "duracion": null,
+      "fecha_firma": null,
+      "fecha_venc": null,
+      "observaciones": null
+    },
+    {
+      "id": 2,
+      "id_proveedor": 1,
+      "id_dictamen": 2,
+      "numero": "2022/01",
+      "duracion": 10,
+      "fecha_firma": "12-01-2022",
+      "fecha_venc": "12-11-2022",
+      "observaciones": "Contrato para la compra de producciones textiles: ropa, cortinas, sabanas..."
+    }
+  ],
+  "dictamen": [
+    {
+      "id": 0,
+      "numero": "2931_22",
+      "aprobado": false,
+      "observaciones": "No se satisfacen las necesidades del sector"
+    },
+    {
+      "id": 1,
+      "numero": "2351_22",
+      "aprobado": true,
+      "observaciones": null
+    }
+  ]
 }

@@ -5,10 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
+import { SkeletonComponent } from './layout/skeleton/skeleton.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { SettingsMenuComponent } from './layout/header/settings-menu/settings-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SkeletonComponent,
+    FooterComponent,
+    HeaderComponent,
+    SettingsMenuComponent
   ],
   imports: [
     BrowserModule,

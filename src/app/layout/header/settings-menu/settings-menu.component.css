@@ -1,0 +1,117 @@
+/*      Setings menu     */
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile img {
+    width: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-profile p {
+    margin-bottom: -5px;
+    font-weight: 500;
+    color: var(--font-color);
+}
+
+.user-profile small {
+    font-size: 12px;
+}
+
+.user-profile a {
+    font-size: 12px;
+    color: var(--third-color);
+    text-decoration: none;
+}
+
+.settings-menu-inner {
+    padding: 20px;
+}
+
+hr {
+    width: 100%;
+    border: none;
+    height: 1px;
+    background: #9a9a9a;
+    margin: 15px 0;
+}
+
+.settings-links {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.settings-links:hover a,
+.settings-links:hover .settings-icon fa-icon {
+    color: var(--third-color);
+}
+
+.settings-links .settings-icon {
+    width: 38px;
+    height: 38px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-links .settings-icon fa-icon {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.settings-links a {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.settings-links a fa-icon {
+    font-size: 1.5rem;
+}
+
+#dark-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--secondary-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dark-btn:hover {
+    background: var(--font-color);
+}
+
+#dark-btn fa-icon {
+    color: var(--font-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+#dark-btn:hover fa-icon {
+    color: var(--third-color);
+}
+
+#dark-btn.dark-btn-on fa-icon {
+    content: '\f185';
+}
+
+/*     End Of Setings menu     */

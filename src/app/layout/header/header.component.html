@@ -1,0 +1,12 @@
+<header>
+    <div class="branding">
+        <a href="home.html"><img src="assets/images/logo-white.png" class="logo"></a>
+        <h2>Sistema para la gesti&oacute;n de contratos</h2>
+    </div>
+
+    <div class="user-menu" (click)="settingsOpened = !settingsOpened">
+        <img src="assets/images/user-picture-default.png" alt="">
+    </div>
+
+    <app-settings-menu class="settings-menu" [class.settings-menu-height]="settingsOpened" [isOpen]="settingsOpened"></app-settings-menu>
+</header>

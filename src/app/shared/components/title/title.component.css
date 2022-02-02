@@ -1,0 +1,23 @@
+.title {
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+}
+
+.title span {
+    font-size: 180%;
+    color: var(--third-color);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 90%;
+    width: 10%;
+    height: 1px;
+    border-bottom: 3px solid var(--third-color);
+}

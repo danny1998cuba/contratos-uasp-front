@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>SigeCont</title>
@@ -7,7 +8,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
+
+<body onload="onLoad()">
   <app-root></app-root>
+
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/yearpicker.js"></script>
+
+    <script>
+      function onLoad() {
+        var darkBtn = document.getElementById('dark-btn');
+
+        if (localStorage.getItem("theme") == "light") {
+          darkBtn.classList.remove('dark-btn-on');
+          document.body.classList.remove('dark-theme');
+        } else if (localStorage.getItem("theme") == "dark") {
+          darkBtn.classList.add('dark-btn-on');
+          document.body.classList.add('dark-theme');
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+      }
+    </script>
 </body>
+
 </html>
