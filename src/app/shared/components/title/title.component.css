@@ -21,3 +21,9 @@
     height: 1px;
     border-bottom: 3px solid var(--third-color);
 }
+
+@media(max-width: 768px) {
+    .title {
+        margin-bottom: 1rem;
+    }
+}

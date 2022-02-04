@@ -70,3 +70,9 @@ body.login header {
     border: none;
     cursor: pointer;
 }
+
+@media screen and (max-width : 991px) {
+    :root {
+        --header-height: 2.5rem;
+    }
+}

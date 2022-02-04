@@ -38,3 +38,16 @@
 .modal-confirm #ok_btn {
     margin-right: 20px;
 }
+
+
+@media screen and (max-width : 991px) {
+    .modal-confirm {
+        width: 50%;
+    }
+}
+
+@media(max-width: 768px) {
+    .modal-confirm {
+        width: 60%;
+    }
+}

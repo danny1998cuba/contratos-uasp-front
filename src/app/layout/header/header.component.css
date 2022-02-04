@@ -82,3 +82,21 @@ header .user-menu img {
 .settings-menu-height {
     max-height: 450px;
 }
+
+@media screen and (max-width : 991px) {
+    header .branding h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media(max-width: 768px) {
+    header .branding {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    header .branding h2 {
+        font-size: 1rem;
+    }
+}
