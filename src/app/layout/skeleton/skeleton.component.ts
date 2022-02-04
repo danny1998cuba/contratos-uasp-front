@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CARDS_INFO } from 'src/app/data/constants';
-import { ICardData } from 'src/app/data/interfaces';
-import { ModalComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-skeleton',

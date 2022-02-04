@@ -31,10 +31,10 @@ export class SettingsMenuComponent implements OnInit {
 
     if (localStorage.getItem("theme") == "light") {
       localStorage.setItem("theme", "dark");
-      this.iconLight = faMoon;
+      this.iconLight = faSun;
     } else {
       localStorage.setItem("theme", "light");
-      this.iconLight = faSun
+      this.iconLight = faMoon
     }
   }
 
