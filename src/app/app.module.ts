@@ -12,6 +12,7 @@ import { SettingsMenuComponent } from './layout/header/settings-menu/settings-me
 import { HomeComponent } from './modules/home/home.component';
 import { PersonalComponent } from './modules/personal/personal.component';
 import { HelpComponent } from './modules/help/help.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HelpComponent } from './modules/help/help.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
