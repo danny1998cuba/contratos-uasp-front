@@ -71,8 +71,95 @@ body.login header {
     cursor: pointer;
 }
 
+hr {
+    width: 60%;
+    margin: 0 auto;
+    border-color: var(--font-color);
+}
+
+/* Generales de layout gestion */
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+}
+
+.content .side {
+    flex-basis: var(--basis);
+    align-self: flex-start;
+    position: relative;
+}
+
+/* Generales de layout gestion */
+
+/* Tables Styles */
+table {
+    table-layout: fixed;
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+table thead {
+    text-align: left;
+    border-bottom: 1px solid var(--third-color);
+}
+
+table td, table thead th {
+    padding: 10px !important;
+}
+
+table td, table th {
+    white-space: normal;
+    word-wrap: break-word;
+    border: none !important;
+}
+
+table tbody tr {
+    cursor: pointer;
+}
+
+table tbody tr:hover {
+    background: var(--selection-color);
+}
+
+table tbody tr.selected {
+    background: var(--third-color);
+}
+
+/* Tables Styles */
+
+/* Resposive */
 @media screen and (max-width : 991px) {
     :root {
         --header-height: 2.5rem;
+    }
+
+    table {
+        font-size: 95%;
+    }
+}
+
+@media(max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .content .side {
+        width: 100%;
+    }
+
+    table {
+        font-size: 100%;
+    }
+}
+
+@media(max-width: 610px) {
+    table {
+        font-size: 90%;
     }
 }

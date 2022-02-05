@@ -1,1 +1,39 @@
-<p>personal works!</p>
+<div class="content">
+    <div class="side" style="--basis:45%">
+        <div class="profile-info">
+            <div class="img-box">
+                <img src="{{user.photo}}" alt="">
+                <span class="state" style="--bg-color:{{user.enabled ? 'green':'red'}};"></span>
+            </div>
+
+            <p id="fullname_label">
+                {{user.nombre}} {{user.apellidoP}} {{user.apellidoM}}
+                <br>
+                <small>(<span id="username_label">{{user.username}}</span>)</small>
+            </p>
+
+            <hr>
+
+            <div class="extra">
+                <app-title text="Informaci&oacute;n adicional"></app-title>
+
+                <p>Correo Electr&oacute;nico: <span>{{user.email | undefined}}</span></p>
+                <p>Tel&eacute;fono: <span>{{user.phone | undefined}}</span></p>
+                <p>Tipo de usuario: <span>{{user.role}}</span></p>
+                
+                <!-- TODO -->
+                <p style="margin-bottom: 5px;">
+                    <u>Privilegios</u>
+                </p>
+                <ul>
+                    <li><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de proveedores</li>
+                    <li><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de contratos</li>
+                    <li><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de usuarios</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="side" style="--basis:45%">
+        <app-title text="Ajustes de perfil"></app-title>
+    </div>
+</div>

@@ -1,1 +1,12 @@
-<p>list-cont works!</p>
+<div class="content">
+    <div class="side" style="--basis:60%">
+        <app-title text="Listado de contratos"></app-title>
+        <app-table-cont [data]="data"></app-table-cont>
+        <div class="download">
+            <button class="btn"><fa-icon [icon]="faDown"></fa-icon>Descargar listado</button>
+        </div>
+    </div>
+    <div class="side" style="--basis:35%">
+        <app-title text="Acciones"></app-title>
+    </div>
+</div>

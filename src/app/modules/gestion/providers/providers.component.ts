@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProvider } from 'src/app/data/interfaces';
 
 @Component({
   selector: 'app-providers',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProvidersComponent implements OnInit {
 
+  public data : IProvider[] = PROVS
+  
   constructor() { }
-
+  
   ngOnInit(): void {
   }
-
+  
 }
+
+const PROVS : IProvider[] = [
+  {
+    numero: 1,
+    nombre: "Salud Publica"
+  },
+  {
+    numero: 2,
+    nombre: "Empresa Porcino"
+  },
+  {
+    numero: 3,
+    nombre: "Producciones Textiles"
+  },
+  {
+    numero: 4,
+    nombre: "Almacenes Universales"
+  }
+];

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import * as fromComponents from './components/index';
 import * as fromPipes from './pipes/index';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import * as fromPipes from './pipes/index';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   declarations: [...fromComponents.componets, ...fromPipes.pipes],
   exports : [
@@ -23,6 +25,7 @@ import * as fromPipes from './pipes/index';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FontAwesomeModule,
     ...fromComponents.componets,
     ...fromPipes.pipes
   ]

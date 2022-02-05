@@ -10,4 +10,5 @@ export interface IUser extends ITypesParent {
     phone?:string,
     enabled:boolean,
     photo:string
+    role:string
 }
