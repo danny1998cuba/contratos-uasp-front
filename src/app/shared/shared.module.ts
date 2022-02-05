@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import * as fromComponents from './components/index';
 import * as fromPipes from './pipes/index';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FullNamePipe } from './pipes/full-name.pipe';
 
 
 @NgModule({

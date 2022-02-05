@@ -14,6 +14,11 @@ export class ProvidersComponent implements OnInit {
   
   ngOnInit(): void {
   }
+
+  selected !: IProvider | undefined
+  getSelected(val : IProvider) {
+    this.selected = val;
+  }
   
 }
 

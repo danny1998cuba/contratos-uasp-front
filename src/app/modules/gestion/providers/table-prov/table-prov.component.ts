@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProvider } from 'src/app/data/interfaces';
 
 @Component({
@@ -6,13 +6,18 @@ import { IProvider } from 'src/app/data/interfaces';
   templateUrl: './table-prov.component.html',
   styleUrls: ['./table-prov.component.css']
 })
-export class TableProvComponent implements OnInit {
+export class TableProvComponent implements OnInit, DoCheck {
 
   @Input() data !: IProvider[]
+  @Output() changeSelected = new EventEmitter()
 
   columnas = ['numero', 'nombre']
 
   constructor() { }
+  
+  ngDoCheck(): void {
+    this.changeSelected.emit(this.selected)  
+  }
 
   ngOnInit(): void {
   }

@@ -102,6 +102,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     padding: 10px;
+    background: transparent !important;
 }
 
 table thead {
@@ -113,10 +114,12 @@ table td, table thead th {
     padding: 10px !important;
 }
 
-table td, table th {
+table td, table th, .mat-cell, .mat-header-cell {
     white-space: normal;
     word-wrap: break-word;
     border: none !important;
+    color: var(--font-color);
+    font-size: 100%;
 }
 
 table tbody tr {
@@ -130,7 +133,6 @@ table tbody tr:hover {
 table tbody tr.selected {
     background: var(--third-color);
 }
-
 /* Tables Styles */
 
 /* Resposive */
@@ -139,7 +141,7 @@ table tbody tr.selected {
         --header-height: 2.5rem;
     }
 
-    table {
+    table, .mat-cell, .mat-header-cell {
         font-size: 95%;
     }
 }
@@ -153,13 +155,13 @@ table tbody tr.selected {
         width: 100%;
     }
 
-    table {
+    table, .mat-cell, .mat-header-cell {
         font-size: 100%;
     }
 }
 
 @media(max-width: 610px) {
-    table {
+    table, .mat-cell, .mat-header-cell {
         font-size: 90%;
     }
 }

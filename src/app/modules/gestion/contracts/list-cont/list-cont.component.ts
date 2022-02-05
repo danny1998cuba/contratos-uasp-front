@@ -18,12 +18,17 @@ export class ListContComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selected !: IContract | undefined
+  getSelected(val : IContract) {
+    this.selected = val;
+  }
+
 }
 
 const CONTS : IContract[] = [
   {
-    "id": 0,
-    "id_provider": 0,
+    "id": 3,
+    "id_provider": 2,
     "id_dictamen": 0,
     "numero": undefined,
     "duracion": undefined,

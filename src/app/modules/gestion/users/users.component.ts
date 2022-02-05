@@ -15,6 +15,10 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selected !: IUser | undefined
+  getSelected(val : IUser) {
+    this.selected = val;
+  }
 }
 
 const USERS : IUser[] = [

@@ -1,9 +1,10 @@
 <div class="content">
     <div class="side" style="--basis:60%">
         <app-title text="Listado de usuarios del sistema"></app-title>
-        <app-table-users [data]="data"></app-table-users>
+        <app-table-users [data]="data" (changeSelected)="getSelected($event)"></app-table-users>
     </div>
     <div class="side" style="--basis:35%">
         <app-title text="Acciones"></app-title>
+        <p>{{selected ? (selected | fullName) : (selected | undefined)}}</p>
     </div>
 </div>
