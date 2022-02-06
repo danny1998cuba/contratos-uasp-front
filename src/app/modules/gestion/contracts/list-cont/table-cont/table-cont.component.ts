@@ -1,5 +1,5 @@
-import { NONE_TYPE } from '@angular/compiler';
-import { Component, DoCheck, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { IContract } from 'src/app/data/interfaces';
 
@@ -8,16 +8,23 @@ import { IContract } from 'src/app/data/interfaces';
   templateUrl: './table-cont.component.html',
   styleUrls: ['./table-cont.component.css']
 })
-export class TableContComponent implements OnInit, DoCheck {
+export class TableContComponent implements OnInit, DoCheck, AfterViewInit {
 
   @Input() data !: IContract[]
   @Output() changeSelected = new EventEmitter()
+
   dataSource !: MatTableDataSource<IContract>
   columnas = ['idx', 'prov', 'fecha_em', 'fecha_ven', 'numero']
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   selected !: IContract | undefined
 
   constructor() { }
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
+  
   ngDoCheck(): void {
     this.changeSelected.emit(this.selected)
   }
@@ -33,9 +40,9 @@ export class TableContComponent implements OnInit, DoCheck {
   }
 
   setSelected(row: any) {
-    if(this.selected != row)
+    if (this.selected != row)
       this.selected = row;
-    else 
+    else
       this.selected = undefined
   }
 }

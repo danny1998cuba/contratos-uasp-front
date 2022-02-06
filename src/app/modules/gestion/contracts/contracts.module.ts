@@ -5,7 +5,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ContractsRoutingModule } from './contracts-routing.module';
 import { TableContComponent } from './list-cont/table-cont/table-cont.component';
 import { MatTableModule } from '@angular/material/table'
-import { MatSortModule } from '@angular/material/sort'
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 
@@ -17,11 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     TableContComponent
   ],
   imports: [
-    SharedModule,
-    MatSortModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule
+    SharedModule
   ],
   exports:[
     ContractsRoutingModule

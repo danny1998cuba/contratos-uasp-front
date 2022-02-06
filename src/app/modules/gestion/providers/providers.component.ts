@@ -38,5 +38,5 @@ const PROVS : IProvider[] = [
   {
     numero: 4,
     nombre: "Almacenes Universales"
-  }
+  },
 ];

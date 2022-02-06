@@ -133,7 +133,20 @@ table tbody tr:hover {
 table tbody tr.selected {
     background: var(--third-color);
 }
+
 /* Tables Styles */
+
+/* Paginator */
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger,
+.mat-select-arrow, .mat-select-value {
+    color: var(--font-color);
+}
+
+.mat-paginator {
+    background: transparent;
+}
+
+/* Paginator */
 
 /* Resposive */
 @media screen and (max-width : 991px) {

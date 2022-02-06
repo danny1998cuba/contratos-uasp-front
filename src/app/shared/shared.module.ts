@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
 import * as fromComponents from './components/index';
 import * as fromPipes from './pipes/index';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FullNamePipe } from './pipes/full-name.pipe';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { FullNamePipe } from './pipes/full-name.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   declarations: [...fromComponents.componets, ...fromPipes.pipes],
   exports : [
@@ -27,6 +30,8 @@ import { FullNamePipe } from './pipes/full-name.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
+    MatTableModule,
+    MatPaginatorModule,
     ...fromComponents.componets,
     ...fromPipes.pipes
   ]
