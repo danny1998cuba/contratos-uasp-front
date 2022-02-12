@@ -2,6 +2,7 @@ import { AfterViewInit, Component, DoCheck, EventEmitter, Input, OnInit, Output,
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { IProvider } from 'src/app/data/interfaces';
+import { faList } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-table-prov',
@@ -14,7 +15,8 @@ export class TableProvComponent implements OnInit, DoCheck, AfterViewInit {
   @Output() changeSelected = new EventEmitter()
 
   dataSource !: MatTableDataSource<IProvider>
-  columnas = ['numero', 'nombre']
+  columnas = ['numero', 'nombre', 'redirect']
+  faIcon = faList;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

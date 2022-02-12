@@ -1,0 +1,10 @@
+.list-conts {
+    text-decoration: none;
+    color: var(--font-color);
+    font-size: 70%;
+    padding: 10px 0;
+}
+
+.list-conts fa-icon {
+    margin-right: 10px;
+}

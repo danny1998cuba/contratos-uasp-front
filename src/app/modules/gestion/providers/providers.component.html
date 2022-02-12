@@ -5,6 +5,16 @@
     </div>
     <div class="side" style="--basis:35%">
         <app-title text="Acciones"></app-title>
-        <p>{{selected?.nombre | undefined}}</p>
+
+        <!-- Btns -->
+
+        <!-- Selected -->
+        <p>Proveedor seleccionado:</p>
+        <p class="selected-prov">{{selected?.nombre | undefined}}</p>
+
+        <!-- Forms -->
+        <div class="form-container" [ngStyle]="style">
+            <app-form-prov title="Nuevo proveedor" btn_text="Agregar" id="form1" #addForm></app-form-prov>
+        </div>
     </div>
 </div>

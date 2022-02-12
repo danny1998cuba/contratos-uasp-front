@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IContract } from 'src/app/data/interfaces';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-cont',
@@ -9,23 +10,34 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 })
 export class ListContComponent implements OnInit {
 
-  public data : IContract[] = CONTS
+  public data: IContract[] = CONTS
+  idProv: number | undefined
+  title: string = "Listado de contratos"
 
   faDown = faDownload
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.idProv = params.prov
+    })
+
+    if (this.idProv) {
+      this.title += " (" + this.idProv + ")"
+    }
   }
 
   selected !: IContract | undefined
-  getSelected(val : IContract) {
+  getSelected(val: IContract) {
     this.selected = val;
   }
 
 }
 
-const CONTS : IContract[] = [
+const CONTS: IContract[] = [
   {
     "id": 3,
     "id_provider": 2,

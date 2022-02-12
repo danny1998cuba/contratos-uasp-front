@@ -1,0 +1,8 @@
+<form id="{{id}}" [class.showing]="showing">
+    <h4>{{title}}</h4>
+    <div class="form-control">
+        <label for="prov_name_add">Nombre*</label>
+        <input type="text" placeholder="Nombre del proveedor" id="prov_name_add" required="true" [value]="selected?.nombre">
+    </div>
+    <button type="submit" class="btn">{{btn_text}}</button>
+</form>

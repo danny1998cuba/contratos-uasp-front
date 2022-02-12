@@ -6,14 +6,16 @@ import { GestionRoutingModule } from './gestion-routing.module';
 import { TableProvComponent } from './providers/table-prov/table-prov.component';
 import { TableUsersComponent } from './users/table-users/table-users.component';
 import { MatTableModule } from '@angular/material/table'
-import { MatSortModule } from '@angular/material/sort'
+import { MatSortModule } from '@angular/material/sort';
+import { FormProvComponent } from './providers/form-prov/form-prov.component'
 
 @NgModule({
   declarations: [
     ProvidersComponent,
     UsersComponent,
     TableProvComponent,
-    TableUsersComponent
+    TableUsersComponent,
+    FormProvComponent
   ],
   imports: [
     SharedModule,

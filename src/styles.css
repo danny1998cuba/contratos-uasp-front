@@ -93,6 +93,11 @@ hr {
     position: relative;
 }
 
+.selected-prov {
+    font-size: 90%;
+    text-align: center;
+}
+
 /* Generales de layout gestion */
 
 /* Tables Styles */
@@ -148,6 +153,199 @@ table tbody tr.selected {
 
 /* Paginator */
 
+/* Forms */
+.form-container {
+    background-color: var(--primary-color);
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding: 20px 10px;
+    margin: 20px auto;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 20px;
+    transition: height 1s;
+}
+
+.form-container form,
+.login-container form {
+    padding: 20px 10%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    transition: transform 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container form h4,
+.login-container form h4 {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.form-container form h4::after,
+.login-container form h4::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+    background: var(--third-color);
+    transform: translateX(-50%);
+}
+
+#form1 {
+    left: 0;
+}
+
+#form2 {
+    left: 110%;
+}
+
+.form-container form input,
+.login-container form input,
+.form-container form select,
+.form-container form textarea {
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container form .form-control,
+.login-container form .form-control {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.form-container form .form-control.check.radio {
+    justify-content: flex-start;
+}
+
+.form-container form .form-control:not(.check),
+.login-container form .form-control:not(.check) {
+    justify-content: space-between !important;
+}
+
+.form-container form .form-control .photo-section {
+    width: 60%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.form-container form .form-control .photo-section .file-select {
+    width: calc(100% - 60px - 2rem);
+    height: 30px;
+    position: relative;
+    background: transparent;
+}
+
+.form-container form .form-control .photo-section .file-select::before {
+    background-color: var(--third-color);
+    color: var(--font-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: 'Seleccionar';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: none;
+    width: 100% !important;
+    height: 100%;
+    font-size: .8rem;
+}
+
+.form-container form .form-control .photo-section .vista_previa {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.form-container form .form-control .photo-section .vista_previa img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.form-container form .form-control .file-select input {
+    width: 100% !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+.form-container form .form-control:not(.check) label,
+.login-container form .form-control:not(.check) label {
+    width: 40%;
+    margin-right: 20px;
+    text-align: left;
+    font-size: .9rem;
+}
+
+.form-container form textarea {
+    resize: none;
+    height: 6rem;
+}
+
+.form-container form .form-control:not(.check) input,
+.login-container form .form-control:not(.check) input,
+.form-container form select,
+.form-container form textarea {
+    width: 60%;
+}
+
+.form-container form input[type="checkbox"] {
+    width: 20px;
+    margin-right: 20px;
+}
+
+.form-container form hr {
+    width: 110%;
+    margin: 10px 0;
+    border-color: var(--font-color);
+}
+
+.form-container form .btn,
+.login-container form .btn,
+.cont_info_form_container form .btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.form-container form .btn:focus,
+.login-container form .btn:focus,
+.cont_info_form_container form .btn:focus {
+    outline: none;
+}
+
+/* Forms */
+
+
 /* Resposive */
 @media screen and (max-width : 991px) {
     :root {
@@ -156,6 +354,36 @@ table tbody tr.selected {
 
     table, .mat-cell, .mat-header-cell {
         font-size: 95%;
+    }
+
+    .form-container form .form-control:not(.check),
+    .login-container form .form-control:not(.check) {
+        gap: 0;
+        flex-direction: column;
+    }
+
+    .form-container form .form-control:not(.check) input,
+    .login-container form .form-control:not(.check) input,
+    .form-container form select,
+    .form-container form textarea {
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .form-container form .form-control:not(.check) label,
+    .login-container form .form-control:not(.check) label {
+        margin-top: 5px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-container form .form-control .photo-section {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .form-container form .form-control .file-select input {
+        margin: 0;
     }
 }
 
@@ -171,10 +399,49 @@ table tbody tr.selected {
     table, .mat-cell, .mat-header-cell {
         font-size: 100%;
     }
+
+    .form-container form,
+    .login-container form {
+        font-size: 100%;
+    }
+
+    .form-container form .form-control:not(.check),
+    .login-container form .form-control:not(.check) {
+        gap: 10px;
+        flex-direction: row;
+    }
+
+    .form-container form .form-control:not(.check) input,
+    .login-container form .form-control:not(.check) input,
+    .form-container form select,
+    .form-container form textarea {
+        margin-top: 10px;
+        width: 60%;
+    }
+
+    .form-container form .form-control:not(.check) label,
+    .login-container form .form-control:not(.check) label {
+        margin-top: 0;
+        width: 40%;
+        text-align: left;
+    }
+
+    .form-container form .form-control .photo-section {
+        width: 60%;
+        margin-top: 5px;
+    }
+
+    .form-container form .form-control .file-select input {
+        margin: 0;
+    }
 }
 
 @media(max-width: 610px) {
     table, .mat-cell, .mat-header-cell {
         font-size: 90%;
+    }
+
+    .form-container form .form-control .photo-section .file-select::before {
+        font-size: .6rem;
     }
 }
