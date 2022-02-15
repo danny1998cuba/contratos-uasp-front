@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, DoCheck, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { IProvider } from 'src/app/data/interfaces';
 import { faList } from '@fortawesome/free-solid-svg-icons'
+import { Provider } from 'src/app/data/schema';
 
 @Component({
   selector: 'app-table-prov',
@@ -11,10 +11,18 @@ import { faList } from '@fortawesome/free-solid-svg-icons'
 })
 export class TableProvComponent implements OnInit, DoCheck, AfterViewInit {
 
-  @Input() data !: IProvider[]
+  private _data !: Provider[]
+
+  @Input() set data(value: any) {
+    console.log(value)
+    this._data = value
+    this.dataSource = new MatTableDataSource<Provider>(this._data)
+    this.dataSource.paginator = this.paginator;
+  }
+
   @Output() changeSelected = new EventEmitter()
 
-  dataSource !: MatTableDataSource<IProvider>
+  dataSource !: MatTableDataSource<Provider>
   columnas = ['numero', 'nombre', 'redirect']
   faIcon = faList;
 
@@ -30,10 +38,10 @@ export class TableProvComponent implements OnInit, DoCheck, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<IProvider>(this.data)
+    this.dataSource = new MatTableDataSource<Provider>(this._data)
   }
 
-  selected !: IProvider | undefined
+  selected !: Provider | undefined
 
   setSelected(row: any) {
     if (this.selected != row)

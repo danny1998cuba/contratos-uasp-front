@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { IProvider } from 'src/app/data/interfaces';
+import { Provider } from 'src/app/data/schema';
+import { ProviderService } from 'src/app/data/services/api';
 import { FormProvComponent } from './form-prov/form-prov.component';
 
 @Component({
@@ -7,25 +8,32 @@ import { FormProvComponent } from './form-prov/form-prov.component';
   templateUrl: './providers.component.html',
   styleUrls: ['./providers.component.css']
 })
-export class ProvidersComponent implements AfterViewInit {
+export class ProvidersComponent implements AfterViewInit, OnInit {
 
-  public data: IProvider[] = PROVS
+  public data: Provider[] = [];
   public style = {
     height: '0px'
   }
 
   @ViewChild('addForm') form1 !: FormProvComponent;
 
-  constructor() { }
+  constructor(private providerService: ProviderService) { }
+
+  ngOnInit(): void {
+    this.providerService.getProviders().subscribe(
+      data => this.data = data
+    )
+  }
 
   ngAfterViewInit(): void {
     this.resizeFormContainer()
+    console.log("Data" + this.data)
   }
 
-  selected !: IProvider | undefined
-  getSelected(val: IProvider) {
+  selected !: Provider | undefined
+  getSelected(val: Provider) {
     this.selected = val;
-    if(this.form1)
+    if (this.form1)
       this.form1.selected = val;
   }
 
@@ -39,24 +47,4 @@ export class ProvidersComponent implements AfterViewInit {
   submited() {
 
   }
-
 }
-
-const PROVS: IProvider[] = [
-  {
-    numero: 1,
-    nombre: "Salud Publica"
-  },
-  {
-    numero: 2,
-    nombre: "Empresa Porcino"
-  },
-  {
-    numero: 3,
-    nombre: "Producciones Textiles"
-  },
-  {
-    numero: 4,
-    nombre: "Almacenes Universales"
-  },
-];

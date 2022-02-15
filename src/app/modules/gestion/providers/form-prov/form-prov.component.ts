@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProvider } from 'src/app/data/interfaces';
+import { Provider } from 'src/app/data/schema';
 
 @Component({
   selector: 'app-form-prov',
@@ -13,7 +14,7 @@ export class FormProvComponent implements OnInit {
   @Input() title: string = 'Form Title'
   @Input() btn_text: string = 'Btn Text'
 
-  public selected!: IProvider
+  public selected!: Provider
 
   @Output() submit = new EventEmitter();
 

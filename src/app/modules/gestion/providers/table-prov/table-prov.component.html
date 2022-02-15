@@ -1,7 +1,7 @@
 <table mat-table [dataSource]="dataSource" #provTable>
     <ng-container matColumnDef="numero">
         <th mat-header-cell *matHeaderCellDef width="20%">N&uacute;mero</th>
-        <td mat-cell *matCellDef="let prov">{{prov.numero}}</td>
+        <td mat-cell *matCellDef="let prov">{{prov.id}}</td>
     </ng-container>
 
     <ng-container matColumnDef="nombre">
@@ -12,7 +12,7 @@
     <ng-container matColumnDef="redirect">
         <th mat-header-cell *matHeaderCellDef width="20%"></th>
         <td mat-cell *matCellDef="let prov">
-            <a class="list-conts" routerLink="/gestion/contracts" [queryParams]="{'prov':prov.numero}">
+            <a class="list-conts" routerLink="/gestion/contracts" [queryParams]="{'prov':prov.id}">
                 <fa-icon [icon]="faIcon"></fa-icon>
                 Listar contratos
             </a>
