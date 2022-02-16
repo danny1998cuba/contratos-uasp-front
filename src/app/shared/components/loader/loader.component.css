@@ -7,7 +7,8 @@
 }
 
 img {
-    width: 45%;
+    width: auto;
+    max-width: 45%;
     margin-bottom: 5%;
 }
 

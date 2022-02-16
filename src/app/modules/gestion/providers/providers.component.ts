@@ -28,7 +28,7 @@ export class ProvidersComponent implements DoCheck {
         if (!r.error) {
           this.data = r.data;
           console.log(r.status)
-          setTimeout(() => this.isLoading = false, 500)
+          setTimeout(() => this.isLoading = false, 1000)
         } else {
           console.log(r.msg + '\nStatus: ' + r.status);
           router.navigateByUrl('/home');
