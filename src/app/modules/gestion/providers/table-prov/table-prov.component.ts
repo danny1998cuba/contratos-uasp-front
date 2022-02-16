@@ -11,15 +11,7 @@ import { Provider } from 'src/app/data/schema';
 })
 export class TableProvComponent implements OnInit, DoCheck, AfterViewInit {
 
-  private _data !: Provider[]
-
-  @Input() set data(value: any) {
-    console.log(value)
-    this._data = value
-    this.dataSource = new MatTableDataSource<Provider>(this._data)
-    this.dataSource.paginator = this.paginator;
-  }
-
+  @Input() data !: Provider[]
   @Output() changeSelected = new EventEmitter()
 
   dataSource !: MatTableDataSource<Provider>
@@ -38,7 +30,7 @@ export class TableProvComponent implements OnInit, DoCheck, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Provider>(this._data)
+    this.dataSource = new MatTableDataSource<Provider>(this.data)
   }
 
   selected !: Provider | undefined

@@ -1,20 +1,26 @@
-<div class="content">
-    <div class="side" style="--basis:60%">
-        <app-title text="Listado de proveedores"></app-title>
-        <app-table-prov [data]="data" (changeSelected)="getSelected($event)"></app-table-prov>
-    </div>
-    <div class="side" style="--basis:35%">
-        <app-title text="Acciones"></app-title>
+<ng-container *ngIf="!isLoading; else noData;">
+    <div class="content">
+        <div class="side" style="--basis:60%">
+            <app-title text="Listado de proveedores"></app-title>
+            <app-table-prov [data]="data" (changeSelected)="getSelected($event)"></app-table-prov>
+        </div>
+        <div class="side" style="--basis:35%">
+            <app-title text="Acciones"></app-title>
 
-        <!-- Btns -->
+            <!-- Btns -->
 
-        <!-- Selected -->
-        <p>Proveedor seleccionado:</p>
-        <p class="selected-prov">{{selected?.nombre | undefined}}</p>
+            <!-- Selected -->
+            <p>Proveedor seleccionado:</p>
+            <p class="selected-prov">{{selected?.nombre | undefined}}</p>
 
-        <!-- Forms -->
-        <div class="form-container" [ngStyle]="style">
-            <app-form-prov title="Nuevo proveedor" btn_text="Agregar" id="form1" #addForm></app-form-prov>
+            <!-- Forms -->
+            <div class="form-container" [ngStyle]="style">
+                <app-form-prov title="Nuevo proveedor" btn_text="Agregar" id="form1" #addForm></app-form-prov>
+            </div>
         </div>
     </div>
-</div>
+</ng-container>
+
+<ng-template #noData>
+    <app-loader></app-loader>
+</ng-template>

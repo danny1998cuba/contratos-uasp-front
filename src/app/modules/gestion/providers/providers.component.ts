@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Provider } from 'src/app/data/schema';
 import { ProviderService } from 'src/app/data/services/api';
 import { FormProvComponent } from './form-prov/form-prov.component';
@@ -8,26 +9,38 @@ import { FormProvComponent } from './form-prov/form-prov.component';
   templateUrl: './providers.component.html',
   styleUrls: ['./providers.component.css']
 })
-export class ProvidersComponent implements AfterViewInit, OnInit {
+export class ProvidersComponent implements DoCheck {
 
   public data: Provider[] = [];
   public style = {
     height: '0px'
   }
+  isLoading = true
 
   @ViewChild('addForm') form1 !: FormProvComponent;
 
-  constructor(private providerService: ProviderService) { }
-
-  ngOnInit(): void {
+  constructor(
+    private providerService: ProviderService,
+    router: Router
+  ) {
     this.providerService.getProviders().subscribe(
-      data => this.data = data
+      r => {
+        if (!r.error) {
+          this.data = r.data;
+          console.log(r.status)
+          setTimeout(() => this.isLoading = false, 500)
+        } else {
+          console.log(r.msg + '\nStatus: ' + r.status);
+          router.navigateByUrl('/home');
+        }
+      }
     )
   }
 
-  ngAfterViewInit(): void {
-    this.resizeFormContainer()
-    console.log("Data" + this.data)
+  ngDoCheck(): void {
+    if (this.form1) {
+      this.resizeFormContainer()
+    }
   }
 
   selected !: Provider | undefined
