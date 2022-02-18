@@ -8,6 +8,17 @@
             <app-title text="Acciones"></app-title>
 
             <!-- Btns -->
+            <div class="btns">
+                <app-action-button (clicked)="addBtn()" [icon]="faPlus" [formSelected]="true"
+                    tooltipText="Agregar proveedor nuevo" #_addBtn></app-action-button>
+                <app-action-button (clicked)="modBtn()" [icon]="faEdit" [formSelected]="false"
+                    [_disabled]="selected==null" tooltipText="Modificar proveedor seleccionado" #_modBtn></app-action-button>
+
+                <!-- <div class="action-btn" onclick="openModal()" id="delProv">
+                    <i class="fa fa-trash"></i>
+                    <span class="tooltip" data-for="delProv">Eliminar proveedor seleccionado</span>
+                </div> -->
+            </div>
 
             <!-- Selected -->
             <p>Proveedor seleccionado:</p>
@@ -15,7 +26,11 @@
 
             <!-- Forms -->
             <div class="form-container" [ngStyle]="style">
-                <app-form-prov title="Nuevo proveedor" btn_text="Agregar" id="form1" #addForm></app-form-prov>
+                <app-form-prov title="Nuevo proveedor" btn_text="Agregar" id="form1" #addForm
+                    (submitEvent)="addProvider($event)" [styles]="{showing:true}"></app-form-prov>
+                <app-form-prov title="Modificar proveedor seleccionado" btn_text="Modificar" id="form2" #modForm
+                    (submitEvent)="modProvider($event)" [styles]="{showing:false}" [provider]="selected">
+                </app-form-prov>
             </div>
         </div>
     </div>

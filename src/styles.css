@@ -61,6 +61,14 @@ body.login header {
 }
 
 /* Estilos generales */
+.btns {    
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
 .btn {
     padding: 10px;
     border-radius: 20px;
@@ -69,6 +77,11 @@ body.login header {
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+.btn[disabled] {
+    background: var(--selection-color);
+    cursor: not-allowed !important;
 }
 
 hr {
@@ -341,6 +354,14 @@ table tbody tr.selected {
 .login-container form .btn:focus,
 .cont_info_form_container form .btn:focus {
     outline: none;
+}
+
+*.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid #42a948 !important;
+}
+
+*.ng-invalid {
+    border-left: 5px solid #a94442 !important;
 }
 
 /* Forms */

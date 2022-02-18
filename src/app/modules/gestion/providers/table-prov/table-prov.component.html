@@ -1,7 +1,8 @@
 <table mat-table [dataSource]="dataSource" #provTable>
     <ng-container matColumnDef="numero">
         <th mat-header-cell *matHeaderCellDef width="20%">N&uacute;mero</th>
-        <td mat-cell *matCellDef="let prov">{{prov.id}}</td>
+        <td mat-cell *matCellDef="let index = index">{{(index + 1) +
+            (paginator ? paginator.pageIndex * paginator.pageSize : 0)}}</td>
     </ng-container>
 
     <ng-container matColumnDef="nombre">

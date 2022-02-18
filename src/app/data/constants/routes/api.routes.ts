@@ -1,7 +1,7 @@
 import { environment as env } from "src/environments/environment";
 
 // Base Routes
-const BASE_ROUTE = `${env.uri}api`
+const BASE_ROUTE = `${env.uri}contracts/api`
 
 // Controllers Routes
 export const GESTION_ROUTES = {

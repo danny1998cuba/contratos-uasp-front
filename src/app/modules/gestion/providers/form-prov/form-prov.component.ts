@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgModel } from '@angular/forms';
+import { FormStyle } from 'src/app/data/interfaces';
 import { Provider } from 'src/app/data/schema';
 
 @Component({
@@ -6,22 +8,29 @@ import { Provider } from 'src/app/data/schema';
   templateUrl: './form-prov.component.html',
   styleUrls: ['./form-prov.component.css']
 })
-export class FormProvComponent implements OnInit {
+export class FormProvComponent {
 
   @Input() id: string = ''
-  @Input() showing: boolean = true
   @Input() title: string = 'Form Title'
   @Input() btn_text: string = 'Btn Text'
+  @Input() styles !: FormStyle
 
-  public selected!: Provider
+  @Input() set provider(val: Provider | undefined) {
+    if (val)
+      this._provider = Object.assign({}, val)
+    else
+      this._provider = new Provider()
+  }
 
-  @Output() submit = new EventEmitter();
+  public _provider: Provider
+
+  @Output() submitEvent = new EventEmitter();
 
   constructor() {
+    this._provider = new Provider()
   }
 
-  ngOnInit(): void {
-    
+  isValid(params: NgModel[]) {
+    return params.filter(f => !f.valid).length == 0;
   }
-
 }
