@@ -10,5 +10,5 @@ export class User {
     email?: string
     telefono?: string
     enabled!: boolean
-    rolesList!: Rol[]
+    rolesList: Rol[] = []
 }

@@ -1,10 +1,41 @@
-<div class="content">
-    <div class="side" style="--basis:60%">
-        <app-title text="Listado de usuarios del sistema"></app-title>
-        <app-table-users [data]="data" (changeSelected)="getSelected($event)"></app-table-users>
+<ng-container *ngIf="!isLoading; else noData;">
+    <div class="content">
+        <div class="side" style="--basis:60%">
+            <app-title text="Listado de usuarios del sistema"></app-title>
+            <app-table-users [data]="data" (changeSelected)="getSelected($event)"></app-table-users>
+        </div>
+        <div class="side" style="--basis:35%">
+            <app-title text="Acciones"></app-title>
+
+            <!-- Btns -->
+            <div class="btns">
+                <app-action-button (clicked)="addBtn()" [icon]="faPlus" [formSelected]="true"
+                    tooltipText="Agregar usuario nuevo" #_addBtn></app-action-button>
+                <app-action-button (clicked)="modBtn()" [icon]="faEdit" [formSelected]="false"
+                    [_disabled]="selected==null" tooltipText="Modificar usuario seleccionado" #_modBtn>
+                </app-action-button>
+
+                <!-- <div class="action-btn" onclick="openModal()" id="delProv">
+        <i class="fa fa-trash"></i>
+        <span class="tooltip" data-for="delProv">Eliminar usuario seleccionado</span>
+    </div> -->
+            </div>
+
+            <!-- Selected -->
+            <p>Usuario seleccionado:</p>
+            <p class="selected-prov">{{selected ? (selected | fullName) : (selected | undefined)}}</p>
+
+            <div class="form-container" [ngStyle]="style">
+                <app-form-user title="Nuevo usuario" btn_text="Agregar" id="form1" #addForm
+                    (submitEvent)="addProvider($event)" [styles]="{showing:true}"></app-form-user>
+                <app-form-user title="Modificar usuario seleccionado" btn_text="Modificar" id="form2" #modForm
+                    (submitEvent)="modProvider($event)" [styles]="{showing:false}" [user]="selected">
+                </app-form-user>
+            </div>
+        </div>
     </div>
-    <div class="side" style="--basis:35%">
-        <app-title text="Acciones"></app-title>
-        <p>{{selected ? (selected | fullName) : (selected | undefined)}}</p>
-    </div>
-</div>
+</ng-container>
+
+<ng-template #noData>
+    <app-loader></app-loader>
+</ng-template>

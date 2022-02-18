@@ -1,8 +1,8 @@
-<table mat-table [dataSource]="dataSource"
-    #usersTable>
+<table mat-table [dataSource]="dataSource" #usersTable>
     <ng-container matColumnDef="numero">
         <th mat-header-cell *matHeaderCellDef width="15%">N&uacute;mero</th>
-        <td mat-cell *matCellDef="let index = index">{{index+1}}</td>
+        <td mat-cell *matCellDef="let index = index">{{(index + 1) +
+            (paginator ? paginator.pageIndex * paginator.pageSize : 0)}}</td>
     </ng-container>
 
     <ng-container matColumnDef="username">
@@ -17,7 +17,7 @@
 
     <ng-container matColumnDef="role">
         <th mat-header-cell *matHeaderCellDef>Rol</th>
-        <td mat-cell *matCellDef="let user">{{user.role}}</td>
+        <td mat-cell *matCellDef="let user">{{user.rolesList | listaRoles}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnas"></tr>

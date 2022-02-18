@@ -1,7 +1,8 @@
-import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { FormStyle } from 'src/app/data/interfaces';
-import { Provider } from 'src/app/data/schema';
+import { Provider, Rol } from 'src/app/data/schema';
+import { UserService } from 'src/app/data/services/api';
 
 @Component({
   selector: 'app-form-prov',
@@ -23,11 +24,25 @@ export class FormProvComponent {
   }
 
   public _provider: Provider
+  public roles: Rol[] = []
 
   @Output() submitEvent = new EventEmitter();
 
-  constructor() {
+  constructor(
+    private userService: UserService
+  ) {
     this._provider = new Provider()
+
+    this.userService.getRoles().subscribe(
+      r => {
+        if (!r.error) {
+          this.roles = r.data;
+          console.log(r.status)
+        } else {
+          console.log(r.msg + '\nStatus: ' + r.status);
+        }
+      }
+    )
   }
 
   isValid(params: NgModel[]) {

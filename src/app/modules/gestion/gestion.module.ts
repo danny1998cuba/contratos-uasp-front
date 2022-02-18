@@ -7,7 +7,8 @@ import { TableProvComponent } from './providers/table-prov/table-prov.component'
 import { TableUsersComponent } from './users/table-users/table-users.component';
 import { MatTableModule } from '@angular/material/table'
 import { MatSortModule } from '@angular/material/sort';
-import { FormProvComponent } from './providers/form-prov/form-prov.component'
+import { FormProvComponent } from './providers/form-prov/form-prov.component';
+import { FormUserComponent } from './users/form-user/form-user.component'
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormProvComponent } from './providers/form-prov/form-prov.component'
     UsersComponent,
     TableProvComponent,
     TableUsersComponent,
-    FormProvComponent
+    FormProvComponent,
+    FormUserComponent
   ],
   imports: [
     SharedModule,

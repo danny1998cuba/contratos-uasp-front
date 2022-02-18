@@ -2,7 +2,7 @@
     <div class="side" style="--basis:45%">
         <div class="profile-info">
             <div class="img-box">
-                <img src="{{user.photo}}" alt="">
+                <img src="assets/images/user-picture-default.png" alt="">
                 <span class="state" style="--bg-color:{{user.enabled ? 'green':'red'}};"></span>
             </div>
 
@@ -18,8 +18,8 @@
                 <app-title text="Informaci&oacute;n adicional"></app-title>
 
                 <p>Correo Electr&oacute;nico: <span>{{user.email | undefined}}</span></p>
-                <p>Tel&eacute;fono: <span>{{user.phone | undefined}}</span></p>
-                <p>Tipo de usuario: <span>{{user.role}}</span></p>
+                <p>Tel&eacute;fono: <span>{{user.telefono | undefined}}</span></p>
+                <p>Tipo de usuario: <span>{{user.rolesList | listaRoles}}</span></p>
                 
                 <!-- TODO -->
                 <p style="margin-bottom: 5px;">

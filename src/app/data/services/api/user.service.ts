@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { GESTION_ROUTES } from '../../constants';
-import { ApiClass, Provider, ResponseHandler } from '../../schema';
+import { ApiClass, ResponseHandler, Rol, User } from '../../schema';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProviderService extends ApiClass {
+export class UserService extends ApiClass {
 
   constructor(private http: HttpClient) {
     super()
   }
 
-  getProviders(): Observable<ResponseHandler> {
+  getUsers(): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS, { headers: this.headers })
+    return this.http.get<User[]>(GESTION_ROUTES.USERS, { headers: this.headers })
       .pipe(
         map(r => {
           response.data = r;
@@ -26,9 +26,9 @@ export class ProviderService extends ApiClass {
       );
   }
 
-  getProviderById(id: number): Observable<ResponseHandler> {
+  getRoles(): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS + '/' + id, { headers: this.headers })
+    return this.http.get<Rol[]>(GESTION_ROUTES.ROLES, { headers: this.headers })
       .pipe(
         map(r => {
           response.data = r;
@@ -38,9 +38,21 @@ export class ProviderService extends ApiClass {
       );
   }
 
-  createProvider(value: Provider): Observable<ResponseHandler> {
+  getUserById(id: number): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.post<any>(GESTION_ROUTES.PROVIDERS, value, { headers: this.headers })
+    return this.http.get<User[]>(GESTION_ROUTES.USERS + '/' + id, { headers: this.headers })
+      .pipe(
+        map(r => {
+          response.data = r;
+          return response;
+        }),
+        catchError(this.error)
+      );
+  }
+
+  createUser(value: User): Observable<ResponseHandler> {
+    const response = new ResponseHandler()
+    return this.http.post<any>(GESTION_ROUTES.USERS, value, { headers: this.headers })
       .pipe(
         map(r => {
           response.data = r;
@@ -51,9 +63,9 @@ export class ProviderService extends ApiClass {
       );
   }
 
-  updateProvider(id: number, value: Provider): Observable<ResponseHandler> {
+  updateUser(id: number, value: User): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.put<any>(GESTION_ROUTES.PROVIDERS + '/' + id, value, { headers: this.headers })
+    return this.http.put<any>(GESTION_ROUTES.USERS + '/' + id, value, { headers: this.headers })
       .pipe(
         map(r => {
           response.data = r;
@@ -64,9 +76,9 @@ export class ProviderService extends ApiClass {
       );
   }
 
-  deleteProvider(id: number): Observable<ResponseHandler> {
+  deleteUser(id: number): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.delete<any>(GESTION_ROUTES.PROVIDERS + '/' + id, { headers: this.headers })
+    return this.http.delete<any>(GESTION_ROUTES.USERS + '/' + id, { headers: this.headers })
       .pipe(
         map(r => {
           response.data = r;

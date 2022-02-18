@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, DoCheck, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { IUser } from 'src/app/data/interfaces';
+import { User } from 'src/app/data/schema';
 
 @Component({
   selector: 'app-table-users',
@@ -10,10 +10,10 @@ import { IUser } from 'src/app/data/interfaces';
 })
 export class TableUsersComponent implements OnInit, DoCheck, AfterViewInit {
 
-  @Input() data !: IUser[]
+  @Input() data !: User[]
   @Output() changeSelected = new EventEmitter()
 
-  dataSource !: MatTableDataSource<IUser>
+  dataSource !: MatTableDataSource<User>
   columnas = ['numero', 'username', 'fullname', 'role']
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -27,10 +27,10 @@ export class TableUsersComponent implements OnInit, DoCheck, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<IUser>(this.data);
+    this.dataSource = new MatTableDataSource<User>(this.data);
   }
     
-  selected !: IUser | undefined
+  selected !: User | undefined
 
   setSelected(row: any) {
     if(this.selected != row)
