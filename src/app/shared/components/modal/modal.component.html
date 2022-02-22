@@ -1,8 +1,8 @@
-<div class="modal active">
+<div class="modal">
     <div class="modal-confirm">
         <p>¿Est&aacute; seguro de eliminar {{type}}: <i>{{name}}</i>?</p>
         <div class="btns">
-            <button id="ok_btn" class="btn" (click)="closeModal()">Aceptar</button>
+            <button id="ok_btn" class="btn" (click)="closeModal();delete.emit()">Aceptar</button>
             <button id="cancel_btn" class="btn" (click)="closeModal()">Cancelar</button>
         </div>
     </div>

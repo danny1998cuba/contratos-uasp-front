@@ -9,6 +9,9 @@ import * as fromPipes from './pipes/index';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { NgModelErrorsTranslatePipe } from './pipes/ng-model-errors-translate.pipe';
+import { ContractPipe } from './pipes/contract.pipe';
 
 
 @NgModule({
@@ -20,7 +23,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HttpClientModule,
     FontAwesomeModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule
   ],
   declarations: [...fromComponents.componets, ...fromPipes.pipes],
   exports : [
@@ -32,6 +36,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FontAwesomeModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSelectModule,
     ...fromComponents.componets,
     ...fromPipes.pipes
   ]

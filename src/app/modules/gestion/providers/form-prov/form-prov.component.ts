@@ -24,25 +24,11 @@ export class FormProvComponent {
   }
 
   public _provider: Provider
-  public roles: Rol[] = []
 
   @Output() submitEvent = new EventEmitter();
 
-  constructor(
-    private userService: UserService
-  ) {
+  constructor() {
     this._provider = new Provider()
-
-    this.userService.getRoles().subscribe(
-      r => {
-        if (!r.error) {
-          this.roles = r.data;
-          console.log(r.status)
-        } else {
-          console.log(r.msg + '\nStatus: ' + r.status);
-        }
-      }
-    )
   }
 
   isValid(params: NgModel[]) {

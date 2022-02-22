@@ -1,21 +1,22 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, DoCheck, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Provider } from 'src/app/data/schema';
-import { ProviderService } from 'src/app/data/services/api';
-import { FormProvComponent } from './form-prov/form-prov.component';
-import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { ActionButtonComponent, ModalComponent } from 'src/app/shared/components';
+import { faEdit, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Contrato, Provider } from 'src/app/data/schema';
+import { ContractService, ProviderService } from 'src/app/data/services/api';
+import { ActionButtonComponent } from 'src/app/shared/components';
+import { FormContComponent } from './form-cont/form-cont.component';
 
 @Component({
-  selector: 'app-providers',
-  templateUrl: './providers.component.html',
-  styleUrls: ['./providers.component.css']
+  selector: 'app-contracts',
+  templateUrl: './contracts.component.html',
+  styleUrls: ['./contracts.component.css']
 })
-export class ProvidersComponent implements DoCheck {
+export class ContractsComponent implements DoCheck {
 
   // Dafinicion de variables
-  public data: Provider[] = []; //Listado de proveedores
+  public data: Contrato[] = []; //Listado de contratos
+  public providers: Provider[] = []
   public style = {  //estilo para el form-container (height ajustable)
     height: '0px'
   }
@@ -23,14 +24,14 @@ export class ProvidersComponent implements DoCheck {
   faPlus = faPlus; faEdit = faEdit; faTrash = faTrash //icons
 
   // Elementos del DOM
-  @ViewChild('addForm') form1 !: FormProvComponent;
-  @ViewChild('modForm') form2 !: FormProvComponent;
+  @ViewChild('addForm') form1 !: FormContComponent;
+  @ViewChild('modForm') form2 !: FormContComponent;
   @ViewChild('_addBtn') _addBtn !: ActionButtonComponent;
   @ViewChild('_modBtn') _modBtn !: ActionButtonComponent;
-  @ViewChild('modal') modal !: ModalComponent;
 
   constructor(
-    private providerService: ProviderService,
+    private contractService: ContractService,
+    private provsService : ProviderService,
     private router: Router
   ) {
     this.refreshData()
@@ -51,8 +52,8 @@ export class ProvidersComponent implements DoCheck {
   }
 
   // Seleccion del proveedor activo
-  selected !: Provider | undefined
-  getSelected(val: Provider) {
+  selected !: Contrato | undefined
+  getSelected(val: Contrato) {
     this.selected = val
     if (!this.selected && this.form2 && this.form2.styles.showing) {
       this.addBtn()
@@ -60,8 +61,8 @@ export class ProvidersComponent implements DoCheck {
   }
 
   // Operaciones de CRUD llamadas desde el servicio
-  addProvider(prov: Provider) {
-    this.providerService.createProvider(prov).subscribe(
+  addProvider(cont: Contrato) {
+    this.contractService.createContrato(cont).subscribe(
       r => {
         if (r.status = HttpStatusCode.Created) {
           this.isLoading = true;
@@ -73,8 +74,8 @@ export class ProvidersComponent implements DoCheck {
     )
   }
 
-  modProvider(prov: Provider) {
-    this.providerService.updateProvider(prov.id, prov).subscribe(
+  modProvider(cont: Contrato) {
+    this.contractService.updateContrato(cont.id, cont).subscribe(
       r => {
         if (r.status = HttpStatusCode.Ok) {
           this.isLoading = true;
@@ -88,7 +89,7 @@ export class ProvidersComponent implements DoCheck {
 
   delProvider() {
     if (this.selected)
-      this.providerService.deleteProvider(this.selected.id).subscribe(
+      this.contractService.deleteContrato(this.selected.id).subscribe(
         r => {
           if (r.status = HttpStatusCode.Ok) {
             this.isLoading = true;
@@ -101,12 +102,26 @@ export class ProvidersComponent implements DoCheck {
   }
 
   refreshData() {
-    this.providerService.getProviders().subscribe(
+    this.contractService.getContratos().subscribe(
       r => {
         if (!r.error) {
           this.data = r.data;
           console.log(r.status)
+          this.loadProvs()
           setTimeout(() => this.isLoading = false, 1000)
+        } else {
+          console.log(r.msg + '\nStatus: ' + r.status);
+          this.router.navigateByUrl('/home');
+        }
+      }
+    )
+  }
+
+  loadProvs() {
+    this.provsService.getProviders().subscribe(
+      r => {
+        if (!r.error) {
+          this.providers = r.data;
         } else {
           console.log(r.msg + '\nStatus: ' + r.status);
           this.router.navigateByUrl('/home');
@@ -150,7 +165,4 @@ export class ProvidersComponent implements DoCheck {
     this.resizeFormContainer()
   }
 
-  delBtn() {
-    this.modal.openModal()
-  }
 }

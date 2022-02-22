@@ -1,0 +1,39 @@
+<ng-container *ngIf="!isLoading; else noData;">
+    <div class="content">
+        <div class="side" style="--basis:60%">
+            <app-title text="Listado de contratos"></app-title>
+            <app-table-cont [data]="data" (changeSelected)="getSelected($event)"></app-table-cont>
+        </div>
+        <div class="side" style="--basis:35%">
+            <app-title text="Acciones"></app-title>
+
+            <!-- Btns -->
+            <div class="btns">
+                <app-action-button (clicked)="addBtn()" [icon]="faPlus" [formSelected]="true"
+                    tooltipText="Agregar proveedor nuevo" #_addBtn></app-action-button>
+                <app-action-button (clicked)="modBtn()" [icon]="faEdit" [formSelected]="false"
+                    [_disabled]="selected==null" tooltipText="Modificar proveedor seleccionado" #_modBtn>
+                </app-action-button>
+            </div>
+
+            <!-- Selected -->
+            <p>Contrato seleccionado:</p>
+            <p class="selected-prov">{{selected? (selected | contract) : (selected | undefined)}}</p>
+
+            <!-- Forms -->
+            <div class="form-container" [ngStyle]="style">
+                <app-form-cont title="Nuevo contrato" btn_text="Agregar" id="form1" #addForm
+                    (submitEvent)="addProvider($event)" [styles]="{showing:true}" [providers]="providers">
+                </app-form-cont>
+                <app-form-cont title="Modificar contrato seleccionado" btn_text="Modificar" id="form2" #modForm
+                    (submitEvent)="modProvider($event)" [styles]="{showing:false}" [contrato]="selected"
+                    [providers]="providers">
+                </app-form-cont>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #noData>
+    <app-loader></app-loader>
+</ng-template>

@@ -61,7 +61,7 @@ body.login header {
 }
 
 /* Estilos generales */
-.btns {    
+.btns {
     display: flex;
     justify-content: center;
     gap: 3rem;
@@ -219,15 +219,49 @@ table tbody tr.selected {
     left: 110%;
 }
 
+
+form .form-group {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+form .form-group * {
+    margin-bottom: 2px !important;
+}
+
+form .error {
+    font-size: 70%;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    background: var(--selection-color);
+    padding: 1px 5px;
+    width: 100%;
+}
+
 .form-container form input,
 .login-container form input,
-.form-container form select,
+.form-container form .mat-select,
 .form-container form textarea {
     height: 30px;
     margin: 10px 0;
     padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.form-container form .mat-select .mat-select-trigger,
+.form-container form .mat-select .mat-select-arrow,
+.form-container form .mat-select .mat-select-value {
+    color: black;
+}
+
+.form-container form .mat-select-placeholder,
+.form-container form .mat-select .mat-select-value {
+    font-size: .9rem;
+}
+
+.form-container form .mat-select {
+    background: #fff;
 }
 
 .form-container form .form-control,
@@ -325,7 +359,7 @@ table tbody tr.selected {
 
 .form-container form .form-control:not(.check) input,
 .login-container form .form-control:not(.check) input,
-.form-container form select,
+.form-container form .mat-select,
 .form-container form textarea {
     width: 60%;
 }
@@ -364,6 +398,82 @@ table tbody tr.selected {
     border-left: 5px solid #a94442 !important;
 }
 
+.field {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 2rem;
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid var(--font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.field.disabled .field-content {
+    pointer-events: none;
+}
+
+.field.disabled .field-content::before {
+    content: '';
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.field .legend {
+    position: absolute;
+    top: -1rem;
+    left: 10%;
+    background: var(--primary-color);
+    padding: 0 .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    z-index: 3;
+    border-radius: 5px;
+}
+
+.field .legend input[type="checkbox"] {
+    margin-right: 1.5rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.field .legend span {
+    position: relative;
+}
+
+.field .legend span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 30%;
+    border: 2px solid var(--third-color);
+}
+
+.field-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.field-content {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+}
+
 /* Forms */
 
 
@@ -385,7 +495,7 @@ table tbody tr.selected {
 
     .form-container form .form-control:not(.check) input,
     .login-container form .form-control:not(.check) input,
-    .form-container form select,
+    .form-container form .mat-select,
     .form-container form textarea {
         margin-top: 5px;
         width: 100%;
@@ -434,7 +544,7 @@ table tbody tr.selected {
 
     .form-container form .form-control:not(.check) input,
     .login-container form .form-control:not(.check) input,
-    .form-container form select,
+    .form-container form .mat-select,
     .form-container form textarea {
         margin-top: 10px;
         width: 60%;

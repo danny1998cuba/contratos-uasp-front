@@ -1,12 +1,14 @@
 <form id="{{id}}" [class.showing]="styles.showing" [ngStyle]="styles.style" (ngSubmit)="submitEvent.emit(_provider)"
     #myForm="ngForm">
     <h4>{{title}}</h4>
-    <div class="form-control">
-        <label>Nombre*</label>
-        <input type="text" placeholder="Nombre del proveedor" required [(ngModel)]="_provider.nombre"
-            [ngModelOptions]="{standalone:true}" #name="ngModel">
-        <div [hidden]="name.valid||name.pristine">
-            Error
+    <div class="form-group">
+        <div class="form-control">
+            <label>Nombre*</label>
+            <input type="text" placeholder="Nombre del proveedor" required [(ngModel)]="_provider.nombre"
+                [ngModelOptions]="{standalone:true}" #name="ngModel" maxlength="255">
+        </div>
+        <div class="error" [hidden]="name.valid||name.pristine">
+            {{name.errors | ngModelErrorsTranslate}}
         </div>
     </div>
     <button type="submit" class="btn" [disabled]="!isValid([name])">{{btn_text}}</button>

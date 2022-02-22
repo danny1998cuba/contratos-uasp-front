@@ -1,0 +1,135 @@
+<form id="{{id}}" [class.showing]="styles.showing" [ngStyle]="styles.style" (ngSubmit)="submitForm()" #myForm="ngForm">
+    <h4>{{title}}</h4>
+
+    <div class="field">
+        <div class="legend">
+            <input type="checkbox" name="" id="" hidden>
+            <span>Proveedor</span>
+        </div>
+
+        <div class="field-center">
+            <div class="field-content">
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="rol_add">Proveedor</label>
+                        <mat-select #prove="ngModel" required [(ngModel)]="_contrato.idProveedor"
+                            [ngModelOptions]="{standalone:true}" placeholder="Seleccione uno"
+                            [compareWith]="compareObjects">
+                            <mat-option *ngFor="let prov of providers" [value]="prov">{{prov.nombre}}</mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="error" [hidden]="prove.valid||prove.pristine">
+                        {{prove.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field" [class.disabled]="!hasDict">
+        <div class="legend">
+            <input type="checkbox" [(ngModel)]="hasDict">
+            <span>Dictamen</span>
+        </div>
+
+        <div class="field-center">
+            <div class="field-content">
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="name_add">N&uacute;mero de dictamen</label>
+                        <input type="text" placeholder="N&uacute;mero de dictamen" #num_dic="ngModel" required
+                            [(ngModel)]="dict.numero" [ngModelOptions]="{standalone:true}" maxlength="20"
+                            [required]="hasDict">
+                    </div>
+                    <div class="error" [hidden]="num_dic.valid||num_dic.pristine">
+                        {{num_dic.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-control check">
+                        <input type="checkbox" #aprob="ngModel" [(ngModel)]="dict.aprobado"
+                            [ngModelOptions]="{standalone:true}">
+                        <label for="enable_add">Aprobado</label>
+                    </div>
+                    <div class="error" [hidden]="aprob.valid||aprob.pristine">
+                        {{aprob.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="name_add">Observaciones dictamen</label>
+                        <textarea type="text" placeholder="Observaciones dictamen" #ob_dic="ngModel"
+                            [(ngModel)]="dict.observaciones" [ngModelOptions]="{standalone:true}"
+                            maxlength="500"></textarea>
+                    </div>
+                    <div class="error" [hidden]="ob_dic.valid||ob_dic.pristine">
+                        {{ob_dic.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field" [class.disabled]="!hasDesc">
+        <div class="legend">
+            <input type="checkbox" [(ngModel)]="hasDesc">
+            <span>Detalles del contrato</span>
+        </div>
+        <div class="field-center">
+            <div class="field-content">
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="name_add">N&uacute;mero de contrato</label>
+                        <input type="text" placeholder="N&uacute;mero de contrato" #num_cont="ngModel" required
+                            [(ngModel)]="_contrato.numero" [ngModelOptions]="{standalone:true}" maxlength="20"
+                            [required]="hasDesc">
+                    </div>
+                    <div class="error" [hidden]="num_cont.valid||num_cont.pristine">
+                        {{num_cont.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="name_add">Duraci&oacute;n (en meses)</label>
+                        <input type="number" placeholder="Duraci&oacute;n" #dur="ngModel"
+                            [(ngModel)]="_contrato.duracion" [ngModelOptions]="{standalone:true}" min="3"
+                            [required]="hasDesc" (change)="dateChanged()">
+                    </div>
+                    <div class="error" [hidden]="dur.valid||dur.pristine">
+                        {{dur.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="name_add">Duraci&oacute;n (en meses)</label>
+                        <input type="date" placeholder="Duraci&oacute;n" #ff="ngModel"
+                            [(ngModel)]="_contrato.fechaFirma" [ngModelOptions]="{standalone:true}" [required]="hasDesc"
+                            (change)="dateChanged()">
+                    </div>
+                    <div class="error" [hidden]="ff.valid||ff.pristine">
+                        {{ff.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="name_add">Observaciones contrato</label>
+                        <textarea type="text" placeholder="Observaciones contrato" #ob_cont="ngModel"
+                            [(ngModel)]="_contrato.observaciones" [ngModelOptions]="{standalone:true}"
+                            maxlength="1000"></textarea>
+                    </div>
+                    <div class="error" [hidden]="ob_cont.valid||ob_cont.pristine">
+                        {{ob_cont.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn"
+        [disabled]="!isValid([prove, num_dic, aprob, ob_dic,num_cont, dur, ff, ob_cont])">{{btn_text}}</button>
+</form>

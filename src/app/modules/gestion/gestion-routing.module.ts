@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContractsComponent } from './contracts/contracts.component';
 import { ProvidersComponent } from './providers/providers.component';
 import { UsersComponent } from './users/users.component';
 
@@ -15,8 +16,7 @@ export const routes: Routes = [
     },
     {
         path: 'contracts',
-        loadChildren: () =>
-            import('./contracts/contracts.module').then((m) => m.ContractsModule)
+        component:ContractsComponent
     },
     {
         path: 'users',

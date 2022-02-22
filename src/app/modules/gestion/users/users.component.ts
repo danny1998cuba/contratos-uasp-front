@@ -2,9 +2,9 @@ import { HttpStatusCode } from '@angular/common/http';
 import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEdit, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { User } from 'src/app/data/schema';
+import { Rol, User } from 'src/app/data/schema';
 import { UserService } from 'src/app/data/services/api';
-import { ActionButtonComponent } from 'src/app/shared/components';
+import { ActionButtonComponent, ModalComponent } from 'src/app/shared/components';
 import { FormUserComponent } from './form-user/form-user.component';
 
 @Component({
@@ -15,6 +15,7 @@ import { FormUserComponent } from './form-user/form-user.component';
 export class UsersComponent implements DoCheck {
 
   public data: User[] = []
+  public roles: Rol[] = []
   public style = {
     height: '0px'
   }
@@ -25,6 +26,7 @@ export class UsersComponent implements DoCheck {
   @ViewChild('modForm') form2 !: FormUserComponent;
   @ViewChild('_addBtn') _addBtn !: ActionButtonComponent;
   @ViewChild('_modBtn') _modBtn !: ActionButtonComponent;
+  @ViewChild('modal') modal !: ModalComponent;
 
   constructor(
     private userService: UserService,
@@ -84,13 +86,41 @@ export class UsersComponent implements DoCheck {
     )
   }
 
+  delProvider() {
+    if (this.selected)
+      this.userService.deleteUser(this.selected.id).subscribe(
+        r => {
+          if (r.status = HttpStatusCode.Ok) {
+            this.isLoading = true;
+            this.refreshData()
+          } else {
+            alert(r.error)
+          }
+        }
+      )
+  }
+
   refreshData() {
     this.userService.getUsers().subscribe(
       r => {
         if (!r.error) {
           this.data = r.data;
           console.log(r.status)
+          this.loadRoles()
           setTimeout(() => this.isLoading = false, 1000)
+        } else {
+          console.log(r.msg + '\nStatus: ' + r.status);
+          this.router.navigateByUrl('/home');
+        }
+      }
+    )
+  }
+
+  loadRoles() {
+    this.userService.getRoles().subscribe(
+      r => {
+        if (!r.error) {
+          this.roles = r.data;
         } else {
           console.log(r.msg + '\nStatus: ' + r.status);
           this.router.navigateByUrl('/home');
@@ -131,5 +161,9 @@ export class UsersComponent implements DoCheck {
     this._modBtn.formSelected = true
 
     this.resizeFormContainer()
+  }
+
+  delBtn() {
+    this.modal.openModal()
   }
 }

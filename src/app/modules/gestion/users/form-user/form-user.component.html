@@ -2,62 +2,111 @@
     #myForm="ngForm">
     <h4>{{title}}</h4>
 
-    <div class="form-control">
-        <label for="name_add">Nombre</label>
-        <input type="text" placeholder="Nombre" #name="ngModel" required [(ngModel)]="_user.nombre"
-            [ngModelOptions]="{standalone:true}">
+
+    <div class="form-group">
+        <div class="form-control">
+            <label for="name_add">Nombre</label>
+            <input type="text" placeholder="Nombre" #name="ngModel" required [(ngModel)]="_user.nombre"
+                [ngModelOptions]="{standalone:true}" maxlength="50">
+        </div>
+        <div class="error" [hidden]="name.valid||name.pristine">
+            {{name.errors | ngModelErrorsTranslate}}
+        </div>
     </div>
 
-    <div class="form-control">
-        <label for="ape1_add">Primer Apellido</label>
-        <input type="text" placeholder="Primer Apellido" #ape1="ngModel" required [(ngModel)]="_user.apellidoP"
-            [ngModelOptions]="{standalone:true}">
+    <div class="form-group">
+        <div class="form-control">
+            <label for="ape1_add">Primer Apellido</label>
+            <input type="text" placeholder="Primer Apellido" #ape1="ngModel" required [(ngModel)]="_user.apellidoP"
+                [ngModelOptions]="{standalone:true}" maxlength="50">
+        </div>
+        <div class="error" [hidden]="ape1.valid||ape1.pristine">
+            {{ape1.errors | ngModelErrorsTranslate}}
+        </div>
     </div>
 
-    <div class="form-control">
-        <label for="ape2_add">Segundo Apellido</label>
-        <input type="text" placeholder="Segundo Apellido" #ape2="ngModel" required [(ngModel)]="_user.apellidoM"
-            [ngModelOptions]="{standalone:true}">
-    </div>
-    <hr>
-    <div class="form-control">
-        <label for="username_add">Nombre de Usuario</label>
-        <input type="text" placeholder="Nombre de usuario" #username="ngModel" required [(ngModel)]="_user.username"
-            [ngModelOptions]="{standalone:true}">
-    </div>
-
-    <div class="form-control">
-        <label for="pass_add">Contrase&ntilde;a</label>
-        <input type="password" placeholder="Contrase&ntilde;a" #pass="ngModel" required [(ngModel)]="_user.password"
-            [ngModelOptions]="{standalone:true}">
+    <div class="form-group">
+        <div class="form-control">
+            <label for="ape2_add">Segundo Apellido</label>
+            <input type="text" placeholder="Segundo Apellido" #ape2="ngModel" required [(ngModel)]="_user.apellidoM"
+                [ngModelOptions]="{standalone:true}" maxlength="50">
+        </div>
+        <div class="error" [hidden]="ape2.valid||ape2.pristine">
+            {{ape2.errors | ngModelErrorsTranslate}}
+        </div>
     </div>
 
-    <!-- <div class="form-control">
-        <label for="rol_add">Tipo de usuario</label>
-        <select id="rol_add" required [(ngModel)]="_user.rolesList" [ngModelOptions]="{standalone:true}">
-            <option>Seleccione uno...</option>
-        </select>
-    </div> -->
-
-    <div class="form-control check">
-        <input type="checkbox" #enable="ngModel" [(ngModel)]="_user.enabled" [ngModelOptions]="{standalone:true}">
-        <label for="enable_add">Habilitado</label>
-    </div>
     <hr>
 
-    <div class="form-control">
-        <label for="email_add">Correo Electr&oacute;nico</label>
-        <input type="email" placeholder="Correo Electr&oacute;nico" #_email="ngModel" [(ngModel)]="_user.email"
-            [ngModelOptions]="{standalone:true}">
+    <div class="form-group">
+        <div class="form-control">
+            <label for="username_add">Nombre de Usuario</label>
+            <input type="text" placeholder="Nombre de usuario" #username="ngModel" required [(ngModel)]="_user.username"
+                [ngModelOptions]="{standalone:true}" maxlength="50">
+        </div>
+        <div class="error" [hidden]="username.valid||username.pristine">
+            {{username.errors | ngModelErrorsTranslate}}
+        </div>
     </div>
 
-    <div class="form-control">
-        <label for="phone_add">Tel&eacute;fono</label>
-        <input type="tel" placeholder="Tel&eacute;fono" #phone="ngModel" [(ngModel)]="_user.telefono"
-            [ngModelOptions]="{standalone:true}">
+    <div class="form-group">
+        <div class="form-control">
+            <label for="pass_add">Contrase&ntilde;a</label>
+            <input type="password" placeholder="Contrase&ntilde;a" #pass="ngModel" required [(ngModel)]="_user.password"
+                [ngModelOptions]="{standalone:true}" maxlength="64">
+        </div>
+        <div class="error" [hidden]="pass.valid||pass.pristine">
+            {{pass.errors | ngModelErrorsTranslate}}
+        </div>
     </div>
 
+    <div class="form-group">
+        <div class="form-control">
+            <label for="rol_add">Tipo de usuario</label>
+            <mat-select #rols="ngModel" required [(ngModel)]="_user.rolesList" [ngModelOptions]="{standalone:true}"
+                multiple placeholder="Seleccione al menos uno" [compareWith]="compareObjects">
+                <mat-option *ngFor="let rol of roles" [value]="rol">{{rol.name}}</mat-option>
+            </mat-select>
+        </div>
+        <div class="error" [hidden]="rols.valid||rols.pristine">
+            {{rols.errors | ngModelErrorsTranslate}}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-control check">
+            <input type="checkbox" #enable="ngModel" [(ngModel)]="_user.enabled" [ngModelOptions]="{standalone:true}">
+            <label for="enable_add">Habilitado</label>
+        </div>
+        <div class="error" [hidden]="enable.valid||enable.pristine">
+            {{enable.errors | ngModelErrorsTranslate}}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <div class="form-control">
+            <label for="email_add">Correo Electr&oacute;nico</label>
+            <input type="email" placeholder="Correo Electr&oacute;nico" #_email="ngModel" [(ngModel)]="_user.email"
+                [ngModelOptions]="{standalone:true}" pattern="[a-zA-Z0-9._]+@[a-z0-9.]+\.[a-z]{2,3}$" maxlength="100">
+        </div>
+        <div class="error" [hidden]="_email.valid||_email.pristine">
+            {{_email.errors | ngModelErrorsTranslate:true}}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-control">
+            <label for="phone_add">Tel&eacute;fono</label>
+            <input type="tel" placeholder="Tel&eacute;fono" #phone="ngModel" [(ngModel)]="_user.telefono"
+                [ngModelOptions]="{standalone:true}" maxlength="50">
+        </div>
+        <div class="error" [hidden]="phone.valid||phone.pristine">
+            {{phone.errors | ngModelErrorsTranslate}}
+        </div>
+    </div>
 
     <button type="submit" class="btn"
-        [disabled]="!isValid([name, ape1, ape2, username, pass, enable, _email, phone])">{{btn_text}}</button>
+        [disabled]="!isValid([name, ape1, ape2, username, pass, enable, _email, phone, rols])">{{btn_text}}</button>
 </form>
