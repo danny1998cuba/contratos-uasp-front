@@ -13,6 +13,7 @@ export class FormUserComponent {
   @Input() id: string = ''
   @Input() title: string = 'Form Title'
   @Input() btn_text: string = 'Btn Text'
+  @Input() isMod: boolean = false
   @Input() styles !: FormStyle
   @Input() roles: Rol[] = []
 
@@ -35,6 +36,6 @@ export class FormUserComponent {
     return params.filter(f => !f.valid).length == 0;
   }
 
-  compareObjects(ob1: any, ob2: any) { return ob1.id === ob2.id }
+  compareObjects(ob1: any, ob2: any) { return (ob1 && ob2) ? ob1.id === ob2.id : false }
 
 }

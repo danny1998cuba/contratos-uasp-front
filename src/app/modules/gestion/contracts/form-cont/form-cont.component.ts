@@ -15,6 +15,7 @@ export class FormContComponent {
   @Input() btn_text: string = 'Btn Text'
   @Input() styles !: FormStyle
   @Input() providers: Provider[] = []
+  @Input() isMod: boolean = false
 
   public _contrato: Contrato
   public hasDict: boolean = false
@@ -66,7 +67,7 @@ export class FormContComponent {
     return params.filter(f => !f.valid).length == 0;
   }
 
-  compareObjects(ob1: any, ob2: any) { return ob1.id === ob2.id }
+  compareObjects(ob1: any, ob2: any) { return (ob1 && ob2) ? ob1.id === ob2.id : false }
 
   dateChanged() {
     if (this._contrato.duracion && this._contrato.fechaFirma) {

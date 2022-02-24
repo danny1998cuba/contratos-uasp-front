@@ -27,7 +27,7 @@
                 </app-form-cont>
                 <app-form-cont title="Modificar contrato seleccionado" btn_text="Modificar" id="form2" #modForm
                     (submitEvent)="modProvider($event)" [styles]="{showing:false}" [contrato]="selected"
-                    [providers]="providers">
+                    [providers]="providers" [isMod]="true">
                 </app-form-cont>
             </div>
         </div>

@@ -26,7 +26,7 @@
                 <app-form-user title="Nuevo usuario" btn_text="Agregar" id="form1" #addForm
                     (submitEvent)="addProvider($event)" [styles]="{showing:true}" [roles]="roles"></app-form-user>
                 <app-form-user title="Modificar usuario seleccionado" btn_text="Modificar" id="form2" #modForm
-                    (submitEvent)="modProvider($event)" [styles]="{showing:false}" [user]="selected" [roles]="roles">
+                    (submitEvent)="modProvider($event)" [styles]="{showing:false}" [user]="selected" [roles]="roles" [isMod]="true">
                 </app-form-user>
             </div>
         </div>

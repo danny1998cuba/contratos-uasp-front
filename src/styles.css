@@ -364,6 +364,11 @@ form .error {
     width: 60%;
 }
 
+.form-container form .form-control input[type="text"]:disabled,
+.form-container form .mat-select:disabled {
+    color: var(--font-color);
+}
+
 .form-container form input[type="checkbox"] {
     width: 20px;
     margin-right: 20px;

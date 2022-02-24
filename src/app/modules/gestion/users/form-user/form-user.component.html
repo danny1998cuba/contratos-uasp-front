@@ -5,7 +5,7 @@
 
     <div class="form-group">
         <div class="form-control">
-            <label for="name_add">Nombre</label>
+            <label for="name_add">Nombre *</label>
             <input type="text" placeholder="Nombre" #name="ngModel" required [(ngModel)]="_user.nombre"
                 [ngModelOptions]="{standalone:true}" maxlength="50">
         </div>
@@ -16,7 +16,7 @@
 
     <div class="form-group">
         <div class="form-control">
-            <label for="ape1_add">Primer Apellido</label>
+            <label for="ape1_add">Primer Apellido *</label>
             <input type="text" placeholder="Primer Apellido" #ape1="ngModel" required [(ngModel)]="_user.apellidoP"
                 [ngModelOptions]="{standalone:true}" maxlength="50">
         </div>
@@ -27,7 +27,7 @@
 
     <div class="form-group">
         <div class="form-control">
-            <label for="ape2_add">Segundo Apellido</label>
+            <label for="ape2_add">Segundo Apellido *</label>
             <input type="text" placeholder="Segundo Apellido" #ape2="ngModel" required [(ngModel)]="_user.apellidoM"
                 [ngModelOptions]="{standalone:true}" maxlength="50">
         </div>
@@ -40,9 +40,9 @@
 
     <div class="form-group">
         <div class="form-control">
-            <label for="username_add">Nombre de Usuario</label>
+            <label for="username_add">Nombre de Usuario *</label>
             <input type="text" placeholder="Nombre de usuario" #username="ngModel" required [(ngModel)]="_user.username"
-                [ngModelOptions]="{standalone:true}" maxlength="50">
+                [ngModelOptions]="{standalone:true}" maxlength="50" [disabled]="isMod">
         </div>
         <div class="error" [hidden]="username.valid||username.pristine">
             {{username.errors | ngModelErrorsTranslate}}
@@ -51,7 +51,7 @@
 
     <div class="form-group">
         <div class="form-control">
-            <label for="pass_add">Contrase&ntilde;a</label>
+            <label for="pass_add">Contrase&ntilde;a *</label>
             <input type="password" placeholder="Contrase&ntilde;a" #pass="ngModel" required [(ngModel)]="_user.password"
                 [ngModelOptions]="{standalone:true}" maxlength="64">
         </div>
@@ -62,7 +62,7 @@
 
     <div class="form-group">
         <div class="form-control">
-            <label for="rol_add">Tipo de usuario</label>
+            <label for="rol_add">Tipo de usuario *</label>
             <mat-select #rols="ngModel" required [(ngModel)]="_user.rolesList" [ngModelOptions]="{standalone:true}"
                 multiple placeholder="Seleccione al menos uno" [compareWith]="compareObjects">
                 <mat-option *ngFor="let rol of roles" [value]="rol">{{rol.name}}</mat-option>
@@ -76,7 +76,7 @@
     <div class="form-group">
         <div class="form-control check">
             <input type="checkbox" #enable="ngModel" [(ngModel)]="_user.enabled" [ngModelOptions]="{standalone:true}">
-            <label for="enable_add">Habilitado</label>
+            <label for="enable_add">Habilitado *</label>
         </div>
         <div class="error" [hidden]="enable.valid||enable.pristine">
             {{enable.errors | ngModelErrorsTranslate}}
