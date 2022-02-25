@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { faEdit, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Rol, User } from 'src/app/data/schema';
 import { UserService } from 'src/app/data/services/api';
-import { ActionButtonComponent, ModalComponent } from 'src/app/shared/components';
+import { ActionButtonComponent, GrowlComponent, ModalComponent } from 'src/app/shared/components';
 import { FormUserComponent } from './form-user/form-user.component';
 
 @Component({
@@ -27,6 +27,7 @@ export class UsersComponent implements DoCheck {
   @ViewChild('_addBtn') _addBtn !: ActionButtonComponent;
   @ViewChild('_modBtn') _modBtn !: ActionButtonComponent;
   @ViewChild('modal') modal !: ModalComponent;
+  @ViewChild('growl') growl !: GrowlComponent;
 
   constructor(
     private userService: UserService,
@@ -59,14 +60,18 @@ export class UsersComponent implements DoCheck {
   addProvider(user: User) {
     this.userService.createUser(user).subscribe(
       r => {
-        if (r.status = HttpStatusCode.Created) {
+        if (r.status == HttpStatusCode.Created) {
           this.isLoading = true;
           this.refreshData()
           setTimeout(() => {
             alert(r.msg)
           }, 1000);
         } else {
-          alert(r.error)
+          this.growl.data = {
+            msg: r.msg,
+            class: 'error',
+            isHidden: false
+          }
         }
       }
     )
@@ -76,11 +81,15 @@ export class UsersComponent implements DoCheck {
     console.log(user)
     this.userService.updateUser(user.id, user).subscribe(
       r => {
-        if (r.status = HttpStatusCode.Ok) {
+        if (r.status == HttpStatusCode.Ok) {
           this.isLoading = true;
           this.refreshData()
         } else {
-          alert(r.error)
+          this.growl.data = {
+            msg: r.msg,
+            class: 'error',
+            isHidden: false
+          }
         }
       }
     )
@@ -90,11 +99,15 @@ export class UsersComponent implements DoCheck {
     if (this.selected)
       this.userService.deleteUser(this.selected.id).subscribe(
         r => {
-          if (r.status = HttpStatusCode.Ok) {
+          if (r.status == HttpStatusCode.Ok) {
             this.isLoading = true;
             this.refreshData()
           } else {
-            alert(r.error)
+            this.growl.data = {
+              msg: r.msg,
+              class: 'error',
+              isHidden: false
+            }
           }
         }
       )
@@ -109,7 +122,6 @@ export class UsersComponent implements DoCheck {
           this.loadRoles()
           setTimeout(() => this.isLoading = false, 1000)
         } else {
-          console.log(r.msg + '\nStatus: ' + r.status);
           this.router.navigateByUrl('/home');
         }
       }
@@ -122,7 +134,6 @@ export class UsersComponent implements DoCheck {
         if (!r.error) {
           this.roles = r.data;
         } else {
-          console.log(r.msg + '\nStatus: ' + r.status);
           this.router.navigateByUrl('/home');
         }
       }

@@ -5,7 +5,7 @@ import { Provider } from 'src/app/data/schema';
 import { ProviderService } from 'src/app/data/services/api';
 import { FormProvComponent } from './form-prov/form-prov.component';
 import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { ActionButtonComponent, ModalComponent } from 'src/app/shared/components';
+import { ActionButtonComponent, GrowlComponent, ModalComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-providers',
@@ -28,6 +28,7 @@ export class ProvidersComponent implements DoCheck {
   @ViewChild('_addBtn') _addBtn !: ActionButtonComponent;
   @ViewChild('_modBtn') _modBtn !: ActionButtonComponent;
   @ViewChild('modal') modal !: ModalComponent;
+  @ViewChild('growl') growl !: GrowlComponent;
 
   constructor(
     private providerService: ProviderService,
@@ -63,11 +64,15 @@ export class ProvidersComponent implements DoCheck {
   addProvider(prov: Provider) {
     this.providerService.createProvider(prov).subscribe(
       r => {
-        if (r.status = HttpStatusCode.Created) {
+        if (r.status == HttpStatusCode.Created) {
           this.isLoading = true;
           this.refreshData()
         } else {
-          alert(r.error)
+          this.growl.data = {
+            msg: r.msg,
+            class: 'error',
+            isHidden: false
+          }
         }
       }
     )
@@ -76,11 +81,15 @@ export class ProvidersComponent implements DoCheck {
   modProvider(prov: Provider) {
     this.providerService.updateProvider(prov.id, prov).subscribe(
       r => {
-        if (r.status = HttpStatusCode.Ok) {
+        if (r.status == HttpStatusCode.Ok) {
           this.isLoading = true;
           this.refreshData()
         } else {
-          alert(r.error)
+          this.growl.data = {
+            msg: r.msg,
+            class: 'error',
+            isHidden: false
+          }
         }
       }
     )
@@ -90,11 +99,15 @@ export class ProvidersComponent implements DoCheck {
     if (this.selected)
       this.providerService.deleteProvider(this.selected.id).subscribe(
         r => {
-          if (r.status = HttpStatusCode.Ok) {
+          if (r.status == HttpStatusCode.Ok) {
             this.isLoading = true;
             this.refreshData()
           } else {
-            alert(r.error)
+            this.growl.data = {
+              msg: r.msg,
+              class: 'error',
+              isHidden: false
+            }
           }
         }
       )
@@ -108,7 +121,6 @@ export class ProvidersComponent implements DoCheck {
           console.log(r.status)
           setTimeout(() => this.isLoading = false, 1000)
         } else {
-          console.log(r.msg + '\nStatus: ' + r.status);
           this.router.navigateByUrl('/home');
         }
       }

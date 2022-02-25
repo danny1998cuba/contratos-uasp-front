@@ -15,14 +15,16 @@ export class ApiClass {
     })
 
     error(error: HttpErrorResponse) {
+        console.log(error)
         let response: ResponseHandler = new ResponseHandler(true)
         if (error.error instanceof ErrorEvent) {
             response.status = error.status
             response.msg = error.error.message
         } else {
             response.status = error.status
-            response.msg = `Message ${error.message}`
+            response.msg = error.error.msg
         }
+
         return of(response)
     }
 }

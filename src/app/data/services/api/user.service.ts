@@ -56,7 +56,7 @@ export class UserService extends ApiClass {
       .pipe(
         map(r => {
           response.data = r;
-          response.status = HttpStatusCode.Ok
+          response.status = HttpStatusCode.Created
           return response;
         }),
         catchError(this.error)

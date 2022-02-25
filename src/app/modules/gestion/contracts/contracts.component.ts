@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { faEdit, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Contrato, Provider } from 'src/app/data/schema';
 import { ContractService, ProviderService } from 'src/app/data/services/api';
-import { ActionButtonComponent } from 'src/app/shared/components';
+import { ActionButtonComponent, GrowlComponent } from 'src/app/shared/components';
 import { FormContComponent } from './form-cont/form-cont.component';
 
 @Component({
@@ -28,6 +28,7 @@ export class ContractsComponent implements DoCheck {
   @ViewChild('modForm') form2 !: FormContComponent;
   @ViewChild('_addBtn') _addBtn !: ActionButtonComponent;
   @ViewChild('_modBtn') _modBtn !: ActionButtonComponent;
+  @ViewChild('growl') growl !: GrowlComponent;
 
   constructor(
     private contractService: ContractService,
@@ -64,11 +65,15 @@ export class ContractsComponent implements DoCheck {
   addProvider(cont: Contrato) {
     this.contractService.createContrato(cont).subscribe(
       r => {
-        if (r.status = HttpStatusCode.Created) {
+        if (r.status == HttpStatusCode.Created) {
           this.isLoading = true;
           this.refreshData()
         } else {
-          alert(r.error)
+          this.growl.data = {
+            msg: r.msg,
+            class: 'error',
+            isHidden: false
+          }
         }
       }
     )
@@ -77,11 +82,15 @@ export class ContractsComponent implements DoCheck {
   modProvider(cont: Contrato) {
     this.contractService.updateContrato(cont.id, cont).subscribe(
       r => {
-        if (r.status = HttpStatusCode.Ok) {
+        if (r.status == HttpStatusCode.Ok) {
           this.isLoading = true;
           this.refreshData()
         } else {
-          alert(r.error)
+          this.growl.data = {
+            msg: r.msg,
+            class: 'error',
+            isHidden: false
+          }
         }
       }
     )
@@ -91,11 +100,15 @@ export class ContractsComponent implements DoCheck {
     if (this.selected)
       this.contractService.deleteContrato(this.selected.id).subscribe(
         r => {
-          if (r.status = HttpStatusCode.Ok) {
+          if (r.status == HttpStatusCode.Ok) {
             this.isLoading = true;
             this.refreshData()
           } else {
-            alert(r.error)
+            this.growl.data = {
+              msg: r.msg,
+              class: 'error',
+              isHidden: false
+            }
           }
         }
       )
@@ -110,7 +123,6 @@ export class ContractsComponent implements DoCheck {
           this.loadProvs()
           setTimeout(() => this.isLoading = false, 1000)
         } else {
-          console.log(r.msg + '\nStatus: ' + r.status);
           this.router.navigateByUrl('/home');
         }
       }
@@ -123,7 +135,6 @@ export class ContractsComponent implements DoCheck {
         if (!r.error) {
           this.providers = r.data;
         } else {
-          console.log(r.msg + '\nStatus: ' + r.status);
           this.router.navigateByUrl('/home');
         }
       }

@@ -38,6 +38,8 @@
     </div>
 
     <app-modal (delete)="delProvider()" type="el proveedor" [name]="selected?.nombre || 'none'" #modal></app-modal>
+
+    <app-growl #growl></app-growl>
 </ng-container>
 
 <ng-template #noData>

@@ -1,0 +1,45 @@
+.growl {
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    width: 250px;
+    color: var(--font-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 30px;
+    font-size: .8rem;
+}
+
+.growl.error {
+    background-color: #ff000077;
+}
+
+.growl.warning {
+    background-color: #ffff0077;
+}
+
+.growl.success {
+    background-color: #09ff3f77;
+}
+
+.growl.hidden {
+    display: none;
+}
+
+.growl .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.growl .close::before {
+    content: 'x';
+}

@@ -1,0 +1,6 @@
+<div class="growl" [class.hidden]="data.isHidden" [ngClass]="data.class">
+    <div class="close" (click)="data.isHidden = true"></div>
+    <div class="msg">
+        {{data.msg}}
+    </div>
+</div>

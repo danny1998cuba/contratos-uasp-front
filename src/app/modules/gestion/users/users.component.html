@@ -35,6 +35,8 @@
 
     <app-modal (delete)="delProvider()" type="el usuario" [name]="selected? (selected | fullName) : 'none'" #modal>
     </app-modal>
+    
+    <app-growl #growl></app-growl>
 </ng-container>
 
 <ng-template #noData>
