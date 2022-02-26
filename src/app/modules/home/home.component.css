@@ -1,7 +1,37 @@
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 30px;
+}
+
 .card-block {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.more-stats {
+    position: relative;
+    display: inline-block;
+    align-self: center;
+    padding: 10px 20px;
+    background: var(--font-color);
+    margin: 30px 0;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 400;
+    color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.more-stats fa-icon {
+    margin-left: 10px;
+}
+
+.more-stats:hover {
+    color: var(--third-color);
 }

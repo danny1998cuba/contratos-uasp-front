@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/data/interfaces';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Rol, User } from 'src/app/data/schema';
 

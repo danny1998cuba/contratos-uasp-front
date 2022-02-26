@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgModelErrorsTranslatePipe } from './pipes/ng-model-errors-translate.pipe';
 import { ContractPipe } from './pipes/contract.pipe';
 import { GrowlComponent } from './components/growl/growl.component';
+import { StatsCardComponent } from './components/stats-card/stats-card.component';
 
 
 @NgModule({

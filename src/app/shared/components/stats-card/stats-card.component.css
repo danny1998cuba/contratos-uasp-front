@@ -1,0 +1,40 @@
+.stat-card {
+    position: relative;
+    background-color: var(--primary-color);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
+    margin: 20px;
+    min-width: 25%;
+}
+
+.stat-card .numbers {
+    position: relative;
+    font-weight: 500;
+    font-size: 2em;
+    color: var(--third-color);
+}
+
+.stat-card .cardName {
+    color: var(--font-color);
+    font-style: 1.1em;
+    margin-top: 5px;
+}
+
+.stat-card .iconBx {
+    font-size: 2.3em;
+    color: var(--font-color);
+}
+
+.stat-card:hover {
+    background: var(--selection-color);
+}
+
+.stat-card:hover .numbers{
+    color: var(--primary-color);
+} 
+.stat-card:hover .cardName, .stat-card:hover .iconBx {
+    color: var(--font-color);
+}

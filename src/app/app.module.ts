@@ -12,6 +12,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { PersonalComponent } from './modules/personal/personal.component';
 import { HelpComponent } from './modules/help/help.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InfoContsComponent } from './modules/info-conts/info-conts.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SettingsMenuComponent,
     HomeComponent,
     PersonalComponent,
-    HelpComponent
+    HelpComponent,
+    InfoContsComponent
   ],
   imports: [
     BrowserModule,

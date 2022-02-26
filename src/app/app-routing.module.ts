@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 import { HelpComponent } from './modules/help/help.component';
 import { HomeComponent } from './modules/home/home.component';
+import { InfoContsComponent } from './modules/info-conts/info-conts.component';
 import { PersonalComponent } from './modules/personal/personal.component';
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
         path: 'gestion',
         loadChildren: () =>
           import('./modules/gestion/gestion.module').then((m) => m.GestionModule)
+      },
+      {
+        path:'stats',
+        component:InfoContsComponent
       },
       {
         path:'personal',

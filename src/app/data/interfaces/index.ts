@@ -1,5 +1,3 @@
 export * from './icard.metadata'
-export * from './icontract.metadata'
-export * from './itypesparent.metadata'
-export * from './iuser.metadata'
+export * from './istat-card.metadata'
 export * from './form-style.metadata'
