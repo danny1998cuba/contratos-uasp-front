@@ -10,7 +10,7 @@
         <div class="field-center">
             <div class="field-content">
                 <div class="form-group" [hidden]="isMod">
-                    <div class="form-control">
+                    <div class="my-form-control">
                         <label for="rol_add">Proveedor *</label>
 
                         <mat-select #prove="ngModel" required [(ngModel)]="_contrato.idProveedor"
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form-group" [hidden]="!isMod">
-                    <div class="form-control">
+                    <div class="my-form-control">
                         <label for="name_add">Proveedor</label>
                         <input type="text" [value]="_contrato.idProveedor?.nombre" [disabled]="isMod">
                     </div>
@@ -44,7 +44,7 @@
         <div class="field-center">
             <div class="field-content">
                 <div class="form-group">
-                    <div class="form-control">
+                    <div class="my-form-control">
                         <label for="name_add">N&uacute;mero de dictamen *</label>
                         <input type="text" placeholder="N&uacute;mero de dictamen" #num_dic="ngModel" required
                             [(ngModel)]="dict.numero" [ngModelOptions]="{standalone:true}" maxlength="20"
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="form-control check">
+                    <div class="my-form-control check">
                         <input type="checkbox" #aprob="ngModel" [(ngModel)]="dict.aprobado"
                             [ngModelOptions]="{standalone:true}">
                         <label for="enable_add">Aprobado *</label>
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="form-control">
+                    <div class="my-form-control">
                         <label for="name_add">Observaciones dictamen</label>
                         <textarea type="text" placeholder="Observaciones dictamen" #ob_dic="ngModel"
                             [(ngModel)]="dict.observaciones" [ngModelOptions]="{standalone:true}"
@@ -89,7 +89,7 @@
         <div class="field-center">
             <div class="field-content">
                 <div class="form-group">
-                    <div class="form-control">
+                    <div class="my-form-control">
                         <label for="name_add">N&uacute;mero de contrato *</label>
                         <input type="text" placeholder="N&uacute;mero de contrato" #num_cont="ngModel" required
                             [(ngModel)]="_contrato.numero" [ngModelOptions]="{standalone:true}" maxlength="20"
@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="form-control">
+                    <div class="my-form-control">
                         <label for="name_add">Duraci&oacute;n (en meses) *</label>
                         <input type="number" placeholder="Duraci&oacute;n" #dur="ngModel"
                             [(ngModel)]="_contrato.duracion" [ngModelOptions]="{standalone:true}" min="3"
@@ -113,7 +113,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="form-control">
+                    <div class="my-form-control">
                         <label for="name_add">Fecha de firma *</label>
                         <input type="date" placeholder="Duraci&oacute;n" #ff="ngModel"
                             [(ngModel)]="_contrato.fechaFirma" [ngModelOptions]="{standalone:true}" [required]="hasDesc"
@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="form-control">
+                    <div class="my-form-control">
                         <label for="name_add">Observaciones contrato</label>
                         <textarea type="text" placeholder="Observaciones contrato" #ob_cont="ngModel"
                             [(ngModel)]="_contrato.observaciones" [ngModelOptions]="{standalone:true}"

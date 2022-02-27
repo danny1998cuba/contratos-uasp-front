@@ -1,8 +1,3 @@
-<div class="search">
-    Buscar:
-    <input (keyup)="applyFilter($event)" placeholder="Escriba algo..." #input>
-</div>
-
 <table mat-table [dataSource]="dataSource" #contsTable>
     <ng-container matColumnDef="idx">
         <th mat-header-cell *matHeaderCellDef width="7%"></th>
@@ -35,7 +30,7 @@
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="5">No data matching the filter "{{input.value}}"</td>
+        <td class="mat-cell" colspan="5">Sin informaci&oacute;n para mostrar</td>
     </tr>
 
 </table>

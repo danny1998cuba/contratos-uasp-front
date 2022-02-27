@@ -264,8 +264,8 @@ form .error {
     background: #fff;
 }
 
-.form-container form .form-control,
-.login-container form .form-control {
+.form-container form .my-form-control,
+.login-container form .my-form-control {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -273,16 +273,16 @@ form .error {
     width: 100%;
 }
 
-.form-container form .form-control.check.radio {
+.form-container form .my-form-control.check.radio {
     justify-content: flex-start;
 }
 
-.form-container form .form-control:not(.check),
-.login-container form .form-control:not(.check) {
+.form-container form .my-form-control:not(.check),
+.login-container form .my-form-control:not(.check) {
     justify-content: space-between !important;
 }
 
-.form-container form .form-control .photo-section {
+.form-container form .my-form-control .photo-section {
     width: 60%;
     margin: 10px 0;
     display: flex;
@@ -291,14 +291,14 @@ form .error {
     gap: 2rem;
 }
 
-.form-container form .form-control .photo-section .file-select {
+.form-container form .my-form-control .photo-section .file-select {
     width: calc(100% - 60px - 2rem);
     height: 30px;
     position: relative;
     background: transparent;
 }
 
-.form-container form .form-control .photo-section .file-select::before {
+.form-container form .my-form-control .photo-section .file-select::before {
     background-color: var(--third-color);
     color: var(--font-color);
     border-radius: 5px;
@@ -317,7 +317,7 @@ form .error {
     font-size: .8rem;
 }
 
-.form-container form .form-control .photo-section .vista_previa {
+.form-container form .my-form-control .photo-section .vista_previa {
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -325,7 +325,7 @@ form .error {
     position: relative;
 }
 
-.form-container form .form-control .photo-section .vista_previa img {
+.form-container form .my-form-control .photo-section .vista_previa img {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -334,7 +334,7 @@ form .error {
     object-fit: cover;
 }
 
-.form-container form .form-control .file-select input {
+.form-container form .my-form-control .file-select input {
     width: 100% !important;
     height: 100%;
     position: absolute;
@@ -344,8 +344,8 @@ form .error {
     opacity: 0;
 }
 
-.form-container form .form-control:not(.check) label,
-.login-container form .form-control:not(.check) label {
+.form-container form .my-form-control:not(.check) label,
+.login-container form .my-form-control:not(.check) label {
     width: 40%;
     margin-right: 20px;
     text-align: left;
@@ -357,14 +357,14 @@ form .error {
     height: 6rem;
 }
 
-.form-container form .form-control:not(.check) input,
-.login-container form .form-control:not(.check) input,
+.form-container form .my-form-control:not(.check) input,
+.login-container form .my-form-control:not(.check) input,
 .form-container form .mat-select,
 .form-container form textarea {
     width: 60%;
 }
 
-.form-container form .form-control input[type="text"]:disabled,
+.form-container form .my-form-control input[type="text"]:disabled,
 .form-container form .mat-select:disabled {
     color: var(--font-color);
 }
@@ -492,33 +492,33 @@ form .error {
         font-size: 95%;
     }
 
-    .form-container form .form-control:not(.check),
-    .login-container form .form-control:not(.check) {
+    .form-container form .my-form-control:not(.check),
+    .login-container form .my-form-control:not(.check) {
         gap: 0;
         flex-direction: column;
     }
 
-    .form-container form .form-control:not(.check) input,
-    .login-container form .form-control:not(.check) input,
+    .form-container form .my-form-control:not(.check) input,
+    .login-container form .my-form-control:not(.check) input,
     .form-container form .mat-select,
     .form-container form textarea {
         margin-top: 5px;
         width: 100%;
     }
 
-    .form-container form .form-control:not(.check) label,
-    .login-container form .form-control:not(.check) label {
+    .form-container form .my-form-control:not(.check) label,
+    .login-container form .my-form-control:not(.check) label {
         margin-top: 5px;
         width: 100%;
         text-align: center;
     }
 
-    .form-container form .form-control .photo-section {
+    .form-container form .my-form-control .photo-section {
         width: 100%;
         margin-top: 5px;
     }
 
-    .form-container form .form-control .file-select input {
+    .form-container form .my-form-control .file-select input {
         margin: 0;
     }
 }
@@ -541,33 +541,33 @@ form .error {
         font-size: 100%;
     }
 
-    .form-container form .form-control:not(.check),
-    .login-container form .form-control:not(.check) {
+    .form-container form .my-form-control:not(.check),
+    .login-container form .my-form-control:not(.check) {
         gap: 10px;
         flex-direction: row;
     }
 
-    .form-container form .form-control:not(.check) input,
-    .login-container form .form-control:not(.check) input,
+    .form-container form .my-form-control:not(.check) input,
+    .login-container form .my-form-control:not(.check) input,
     .form-container form .mat-select,
     .form-container form textarea {
         margin-top: 10px;
         width: 60%;
     }
 
-    .form-container form .form-control:not(.check) label,
-    .login-container form .form-control:not(.check) label {
+    .form-container form .my-form-control:not(.check) label,
+    .login-container form .my-form-control:not(.check) label {
         margin-top: 0;
         width: 40%;
         text-align: left;
     }
 
-    .form-container form .form-control .photo-section {
+    .form-container form .my-form-control .photo-section {
         width: 60%;
         margin-top: 5px;
     }
 
-    .form-container form .form-control .file-select input {
+    .form-container form .my-form-control .file-select input {
         margin: 0;
     }
 }
@@ -577,7 +577,7 @@ form .error {
         font-size: 90%;
     }
 
-    .form-container form .form-control .photo-section .file-select::before {
+    .form-container form .my-form-control .photo-section .file-select::before {
         font-size: .6rem;
     }
 }

@@ -1,0 +1,11 @@
+.download {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.download .btn i {
+    margin-right: .5rem;
+    padding: 5px;
+}

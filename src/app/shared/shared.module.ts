@@ -10,10 +10,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
-import { NgModelErrorsTranslatePipe } from './pipes/ng-model-errors-translate.pipe';
-import { ContractPipe } from './pipes/contract.pipe';
-import { GrowlComponent } from './components/growl/growl.component';
-import { StatsCardComponent } from './components/stats-card/stats-card.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NgYasYearPickerModule } from 'ngy-year-picker';
 
 
 @NgModule({
@@ -26,10 +24,12 @@ import { StatsCardComponent } from './components/stats-card/stats-card.component
     FontAwesomeModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule,
+    NgYasYearPickerModule
   ],
   declarations: [...fromComponents.componets, ...fromPipes.pipes],
-  exports : [
+  exports: [
     CommonModule,
     RouterModule,
     FormsModule,
@@ -39,6 +39,8 @@ import { StatsCardComponent } from './components/stats-card/stats-card.component
     MatTableModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatSlideToggleModule,
+    NgYasYearPickerModule,
     ...fromComponents.componets,
     ...fromPipes.pipes
   ]

@@ -1,0 +1,57 @@
+<form id="form1" [class.showing]="styles.showing" [ngStyle]="styles.style" #myForm="ngForm">
+    <h4>Búsqueda avanzada</h4>
+
+    <div class="filter-option">
+        <div class="label-div">
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <label>Proveedor</label>
+        </div>
+        <mat-select [compareWith]="compareObjects" placeholder="Seleccione uno...">
+            <mat-option>Limpiar selecci&oacute;n</mat-option>
+            <mat-option *ngFor="let prov of providers" [value]="prov">{{prov.nombre}}</mat-option>
+        </mat-select>
+    </div>
+
+    <div class="filter-option">
+        <div class="label-div">
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <label for="enable_mod">Dictaminado</label>
+        </div>
+        <input type="checkbox" id="enable_mod" class="check">
+    </div>
+
+    <div class="filter-option">
+        <div class="label-div">
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <label for="enable_mod">Aprobado</label>
+        </div>
+        <input type="checkbox" id="enable_mod" class="check">
+    </div>
+
+    <div class="filter-option">
+        <div class="label-div">
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <label for="enable_mod">Vigencia</label>
+        </div>
+        <input type="checkbox" id="enable_mod" class="check">
+    </div>
+
+    <div class="filter-option">
+        <div class="label-div">
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <label for="enable_mod">Pr&oacute;ximos a vencer</label>
+        </div>
+        <input type="text" style="opacity: 0; width: 2px !important;" disabled>
+    </div>
+
+    <div class="filter-option">
+        <div class="label-div">
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <label for="enable_mod">Por a&ntilde;o</label>
+        </div>
+        <ngy-year-picker #yearpick></ngy-year-picker>
+    </div>
+
+    <button type="submit" class="btn">Sin filtros</button>
+    <button type="submit" class="btn">Filtrar</button>
+</form>

@@ -13,6 +13,8 @@ import { PersonalComponent } from './modules/personal/personal.component';
 import { HelpComponent } from './modules/help/help.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoContsComponent } from './modules/info-conts/info-conts.component';
+import { GestionModule } from './modules/gestion/gestion.module';
+import { FilterFormComponent } from './modules/info-conts/filter-form/filter-form.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { InfoContsComponent } from './modules/info-conts/info-conts.component';
     HomeComponent,
     PersonalComponent,
     HelpComponent,
-    InfoContsComponent
+    InfoContsComponent,
+    FilterFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    GestionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

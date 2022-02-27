@@ -1,0 +1,52 @@
+.filter-option {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.filter-option .label-div {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-option input:not(.check),
+.filter-option ngy-year-picker,
+.filter-option mat-select {
+    width: 60%;
+}
+
+@media screen and (max-width : 991px) {
+    .filter-option {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .filter-option input:not(.check),
+    .filter-option ngy-year-picker,
+    .filter-option mat-select {
+        margin-top: 5px;
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width : 768px) {
+    .filter-option {
+        gap: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .filter-option input:not(.check),
+    .filter-option ngy-year-picker,
+    .filter-option mat-select {
+        margin-top: 10px;
+        width: 60%;
+    }
+
+}

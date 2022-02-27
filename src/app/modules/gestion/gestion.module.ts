@@ -10,7 +10,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { FormProvComponent } from './providers/form-prov/form-prov.component';
 import { FormUserComponent } from './users/form-user/form-user.component';
 import { ContractsComponent } from './contracts/contracts.component';
-import { TableContComponent } from './contracts/table-cont/table-cont.component';
 import { FormContComponent } from './contracts/form-cont/form-cont.component'
 
 @NgModule({
@@ -22,13 +21,10 @@ import { FormContComponent } from './contracts/form-cont/form-cont.component'
     FormProvComponent,
     FormUserComponent,
     ContractsComponent,
-    TableContComponent,
     FormContComponent
   ],
   imports: [
-    SharedModule,
-    MatTableModule,
-    MatSortModule
+    SharedModule
   ],
   exports: [
     GestionRoutingModule
