@@ -10,7 +10,8 @@
         </div>
         <div class="side" style="--basis:35%">
             <div class="form-container" [ngStyle]="style">
-                <app-filter-form [styles]="{showing:true}" #filterForm></app-filter-form>
+                <app-filter-form [styles]="{showing:true}" [providers]="providers" #filterForm
+                    (emitter)="submited($event)"></app-filter-form>
             </div>
         </div>
     </div>

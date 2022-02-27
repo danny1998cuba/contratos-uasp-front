@@ -3,42 +3,50 @@
 
     <div class="filter-option">
         <div class="label-div">
-            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <mat-slide-toggle color="primary" [(ngModel)]="isProv" [ngModelOptions]="{standalone:true}">
+            </mat-slide-toggle>
             <label>Proveedor</label>
         </div>
-        <mat-select [compareWith]="compareObjects" placeholder="Seleccione uno...">
-            <mat-option>Limpiar selecci&oacute;n</mat-option>
-            <mat-option *ngFor="let prov of providers" [value]="prov">{{prov.nombre}}</mat-option>
+        <mat-select [compareWith]="compareObjects" placeholder="Seleccione uno..." [disabled]="!isProv"
+            [(ngModel)]="provId" [ngModelOptions]="{standalone:true}">
+            <mat-option *ngFor="let prov of providers" [value]="prov.id">{{prov.nombre}}</mat-option>
         </mat-select>
     </div>
 
     <div class="filter-option">
         <div class="label-div">
-            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <mat-slide-toggle color="primary" [(ngModel)]="isDict" [ngModelOptions]="{standalone:true}">
+            </mat-slide-toggle>
             <label for="enable_mod">Dictaminado</label>
         </div>
-        <input type="checkbox" id="enable_mod" class="check">
+        <input type="checkbox" id="enable_mod" class="check" [disabled]="!isDict" [(ngModel)]="dict"
+            [ngModelOptions]="{standalone:true}">
     </div>
 
     <div class="filter-option">
         <div class="label-div">
-            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <mat-slide-toggle color="primary" [(ngModel)]="isAprob" [ngModelOptions]="{standalone:true}">
+            </mat-slide-toggle>
             <label for="enable_mod">Aprobado</label>
         </div>
-        <input type="checkbox" id="enable_mod" class="check">
+        <input type="checkbox" id="enable_mod" class="check" [disabled]="!isAprob" [(ngModel)]="aprob"
+            [ngModelOptions]="{standalone:true}">
     </div>
 
     <div class="filter-option">
         <div class="label-div">
-            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <mat-slide-toggle color="primary" [(ngModel)]="isVig" [ngModelOptions]="{standalone:true}">
+            </mat-slide-toggle>
             <label for="enable_mod">Vigencia</label>
         </div>
-        <input type="checkbox" id="enable_mod" class="check">
+        <input type="checkbox" id="enable_mod" class="check" [disabled]="!isVig" [(ngModel)]="vig"
+            [ngModelOptions]="{standalone:true}">
     </div>
 
     <div class="filter-option">
         <div class="label-div">
-            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <mat-slide-toggle color="primary" [(ngModel)]="x_venc" [ngModelOptions]="{standalone:true}">
+            </mat-slide-toggle>
             <label for="enable_mod">Pr&oacute;ximos a vencer</label>
         </div>
         <input type="text" style="opacity: 0; width: 2px !important;" disabled>
@@ -46,12 +54,14 @@
 
     <div class="filter-option">
         <div class="label-div">
-            <mat-slide-toggle color="primary"></mat-slide-toggle>
+            <mat-slide-toggle color="primary" [(ngModel)]="isYear" [ngModelOptions]="{standalone:true}">
+            </mat-slide-toggle>
             <label for="enable_mod">Por a&ntilde;o</label>
         </div>
-        <ngy-year-picker #yearpick></ngy-year-picker>
+        <ngy-year-picker #yearpick [isDisabled]="!isYear" [(ngModel)]="year" [ngModelOptions]="{standalone:true}">
+        </ngy-year-picker>
     </div>
 
-    <button type="submit" class="btn">Sin filtros</button>
-    <button type="submit" class="btn">Filtrar</button>
+    <button type="submit" class="btn" (click)="cleared()">Sin filtros</button>
+    <button type="submit" class="btn" (click)="submit()">Filtrar</button>
 </form>
