@@ -5,7 +5,15 @@
     margin-top: 2rem;
 }
 
-.download .btn i {
+.download .btn fa-icon {
     margin-right: .5rem;
     padding: 5px;
+}
+
+.filter-detail {
+    font-size: .8rem;
+    margin-left: 1rem;
+    overflow-wrap: normal;
+    width: 100%;
+    padding: 3px;
 }

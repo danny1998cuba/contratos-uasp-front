@@ -15,7 +15,10 @@ export const GESTION_ROUTES = {
 export const FILTERS = {
     PROV: 'prov=',
     DICT: 'dict=',
-    APROB: 'aprob='
+    APROB: 'aprob=',
+    VIG: 'vig=',
+    X_VENC: 'xVenc=',
+    YEAR: 'year='
 }
 
 // Connectors

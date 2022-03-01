@@ -1,7 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { NgYasYearPickerComponent } from 'ngy-year-picker';
-import { ContractFilters, FormStyle } from 'src/app/data/interfaces';
+import { IContractFilters, FormStyle } from 'src/app/data/interfaces';
 import { Provider } from 'src/app/data/schema';
 
 @Component({
@@ -45,12 +45,12 @@ export class FilterFormComponent implements AfterViewInit {
   compareObjects(ob1: any, ob2: any) { return (ob1 && ob2) ? ob1.id === ob2.id : false }
 
   cleared() {
-    let filters :ContractFilters = {}
+    let filters :IContractFilters = {}
     this.emitter.emit(filters)
   }
 
   submit() {
-    let filters: ContractFilters = {
+    let filters: IContractFilters = {
       provId: this.isProv ? this.provId : undefined,
       dict: this.isDict ? this.dict : undefined,
       aprob: this.isAprob ? this.aprob : undefined,

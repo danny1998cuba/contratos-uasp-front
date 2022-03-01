@@ -1,4 +1,4 @@
-export interface ContractFilters {
+export interface IContractFilters {
     provId?: number,
     dict?: boolean,
     aprob?: boolean,

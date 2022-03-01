@@ -1,21 +1,28 @@
-<div class="container">
-    <app-title text="Estad&iacute;sticas"></app-title>
+<ng-container *ngIf="!isLoading; else noData;">
+    <div class="container">
+        <app-title text="Estad&iacute;sticas"></app-title>
 
-    <div class="card-block">
-        <ng-container *ngFor="let stat of stats">
-            <app-stats-card [data]="stat"></app-stats-card>
-        </ng-container>
+        <div class="card-block">
+            <ng-container *ngFor="let stat of stats">
+                <app-stats-card [data]="stat"></app-stats-card>
+            </ng-container>
+        </div>
+
+        <a routerLink="/stats" class="more-stats">M&aacute;s informaci&oacute;n de contratos <fa-icon
+                [icon]="faArrowRight"></fa-icon></a>
     </div>
 
-    <a routerLink="/stats" class="more-stats">M&aacute;s informaci&oacute;n de contratos <fa-icon [icon]="faArrowRight"></fa-icon></a>
-</div>
 
-
-<div class="container">
-    <app-title text="Gesti&oacute;n"></app-title>
-    <div class="card-block">
-        <ng-container *ngFor="let card of cards">
-            <app-n-card [data]="card"></app-n-card>
-        </ng-container>
+    <div class="container">
+        <app-title text="Gesti&oacute;n"></app-title>
+        <div class="card-block">
+            <ng-container *ngFor="let card of cards">
+                <app-n-card [data]="card"></app-n-card>
+            </ng-container>
+        </div>
     </div>
-</div>
+</ng-container>
+
+<ng-template #noData>
+    <app-loader></app-loader>
+</ng-template>

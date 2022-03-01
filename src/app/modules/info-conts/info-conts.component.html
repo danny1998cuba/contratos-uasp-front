@@ -2,10 +2,11 @@
     <div class="content">
         <div class="side" style="--basis:60%">
             <app-title text="Informaci&oacute;n de contratos"></app-title>
-            <p>Detalles de los filtros aplicados</p>
+            <p>Detalles de los filtros aplicados:</p>
+            <p class="filter-detail">{{filtersDetails}}</p>
             <app-table-cont [data]="data"></app-table-cont>
             <div class="download">
-                <button class="btn"><i class="fa fa-download"></i>Descargar listado</button>
+                <button class="btn"><fa-icon [icon]="faDown"></fa-icon>Descargar listado</button>
             </div>
         </div>
         <div class="side" style="--basis:35%">
