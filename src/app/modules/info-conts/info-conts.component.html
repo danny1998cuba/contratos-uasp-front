@@ -4,9 +4,14 @@
             <app-title text="Informaci&oacute;n de contratos"></app-title>
             <p>Detalles de los filtros aplicados:</p>
             <p class="filter-detail">{{filtersDetails}}</p>
-            <app-table-cont [data]="data"></app-table-cont>
+            <app-table-cont [data]="data" (changeSelected)="getSelected($event)"></app-table-cont>
             <div class="download">
-                <button class="btn"><fa-icon [icon]="faDown"></fa-icon>Descargar listado</button>
+                <button class="btn" [disabled]="selected==null" (click)="infoSelected()">
+                    <fa-icon [icon]="faInfo"></fa-icon>Informaci&oacute;n seleccionado
+                </button>
+                <button class="btn" [disabled]="data.length==0">
+                    <fa-icon [icon]="faDown"></fa-icon>Descargar listado
+                </button>
             </div>
         </div>
         <div class="side" style="--basis:35%">
@@ -16,6 +21,8 @@
             </div>
         </div>
     </div>
+    
+    <app-info-modal #modal></app-info-modal>
 </ng-container>
 
 <ng-template #noData>

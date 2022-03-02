@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoContsComponent } from './modules/info-conts/info-conts.component';
 import { GestionModule } from './modules/gestion/gestion.module';
 import { FilterFormComponent } from './modules/info-conts/filter-form/filter-form.component';
+import { InfoModalComponent } from './modules/info-conts/info-modal/info-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FilterFormComponent } from './modules/info-conts/filter-form/filter-for
     PersonalComponent,
     HelpComponent,
     InfoContsComponent,
-    FilterFormComponent
+    FilterFormComponent,
+    InfoModalComponent
   ],
   imports: [
     BrowserModule,

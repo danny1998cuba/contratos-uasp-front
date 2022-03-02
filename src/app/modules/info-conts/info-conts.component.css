@@ -3,6 +3,12 @@
     align-items: center;
     justify-content: flex-end;
     margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.download .btn {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
 }
 
 .download .btn fa-icon {

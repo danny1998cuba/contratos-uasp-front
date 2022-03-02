@@ -1,10 +1,11 @@
 import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { IContractFilters } from 'src/app/data/interfaces';
 import { Contrato, Provider } from 'src/app/data/schema';
 import { ContractService, ProviderService } from 'src/app/data/services/api';
 import { FilterFormComponent } from './filter-form/filter-form.component';
+import { InfoModalComponent } from './info-modal/info-modal.component';
 
 @Component({
   selector: 'app-info-conts',
@@ -21,10 +22,11 @@ export class InfoContsComponent implements OnInit, DoCheck {
     height: '0px'
   }
   isLoading = true  //loader
-  faDown = faDownload
+  faDown = faDownload; faInfo = faInfoCircle
 
   // Elementos del DOM
   @ViewChild('filterForm') form1 !: FilterFormComponent;
+  @ViewChild('modal') modal !: InfoModalComponent;
 
   constructor(
     private contractService: ContractService,
@@ -41,6 +43,12 @@ export class InfoContsComponent implements OnInit, DoCheck {
       }
       this.isLoading = false
     }, 1000);
+  }
+
+  // Seleccion del proveedor activo
+  selected !: Contrato | undefined
+  getSelected(val: Contrato) {
+    this.selected = val
   }
 
   ngDoCheck(): void {
@@ -144,5 +152,11 @@ export class InfoContsComponent implements OnInit, DoCheck {
     } else {
       this.filtersDetails = 'Sin filtros activos'
     }
+  }
+
+  infoSelected() {
+    if (this.selected)
+      this.modal.contract = this.selected
+    this.modal.openModal()
   }
 }
