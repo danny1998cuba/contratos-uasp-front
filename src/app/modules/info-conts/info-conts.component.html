@@ -9,7 +9,7 @@
                 <button class="btn" [disabled]="selected==null" (click)="infoSelected()">
                     <fa-icon [icon]="faInfo"></fa-icon>Informaci&oacute;n seleccionado
                 </button>
-                <button class="btn" [disabled]="data.length==0">
+                <button class="btn" [disabled]="data.length==0" (click)="download()">
                     <fa-icon [icon]="faDown"></fa-icon>Descargar listado
                 </button>
             </div>

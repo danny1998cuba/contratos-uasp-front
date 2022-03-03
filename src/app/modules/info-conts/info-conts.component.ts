@@ -1,9 +1,11 @@
-import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
+import { DatePipe, getLocaleId } from '@angular/common';
+import { Component, DoCheck, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faDownload, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { IContractFilters } from 'src/app/data/interfaces';
 import { Contrato, Provider } from 'src/app/data/schema';
 import { ContractService, ProviderService } from 'src/app/data/services/api';
+import { ExportService } from 'src/app/shared/services';
 import { FilterFormComponent } from './filter-form/filter-form.component';
 import { InfoModalComponent } from './info-modal/info-modal.component';
 
@@ -31,6 +33,7 @@ export class InfoContsComponent implements OnInit, DoCheck {
   constructor(
     private contractService: ContractService,
     private provsService: ProviderService,
+    private exportService: ExportService,
     private router: Router
   ) {
     this.loadProvs()
@@ -158,5 +161,44 @@ export class InfoContsComponent implements OnInit, DoCheck {
     if (this.selected)
       this.modal.contract = this.selected
     this.modal.openModal()
+  }
+
+  download() {
+    this.exportService.downloadPdf(
+      this.prepareList(),
+      [
+        "Listado de contratos",
+        this.filtersDetails == 'Sin filtros activos' ?
+          'Todos los contratos' :
+          ('Filtros aplicados: ' + this.filtersDetails)
+      ],
+      ('Contratos_' + new Date().toISOString() + '.pdf')
+    )
+  }
+
+  prepareList() {
+    let listExport: {
+      id: number,
+      prov: string,
+      fechaFirma: string | null,
+      fechaVenc: string | null,
+      number: string
+    }[] = []
+
+    for (let index = 0; index < this.data.length; index++) {
+      const cont = this.data[index];
+
+      let datePipe = new DatePipe("es-ES")
+
+      listExport.push({
+        id: index + 1,
+        prov: cont.idProveedor.nombre,
+        fechaFirma: cont.fechaFirma ? (datePipe.transform(cont.fechaFirma, 'dd / MMM / yyyy')) : 'No asignado',
+        fechaVenc: cont.fechaVenc ? (datePipe.transform(cont.fechaVenc, 'dd / MMM / yyyy')) : 'No asignado',
+        number: cont.numero ? cont.numero : 'No asignado'
+      })
+    }
+
+    return listExport
   }
 }
