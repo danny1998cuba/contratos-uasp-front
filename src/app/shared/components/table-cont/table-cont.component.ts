@@ -29,7 +29,6 @@ export class TableContComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Contrato>(this.data)
-    console.log(this.dataSource)
   }
 
   applyFilter(event: Event) {

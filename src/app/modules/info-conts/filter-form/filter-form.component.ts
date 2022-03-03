@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { NgYasYearPickerComponent } from 'ngy-year-picker';
 import { IContractFilters, FormStyle } from 'src/app/data/interfaces';
 import { Provider } from 'src/app/data/schema';
@@ -25,10 +25,13 @@ export class FilterFormComponent implements AfterViewInit {
 
   @ViewChild('yearpick') yearpick !: NgYasYearPickerComponent
 
-  constructor() { }
+  constructor(    
+    private cdRef : ChangeDetectorRef
+  ) { }
   ngAfterViewInit(): void {
     this.yearpick.yearList = this.generateYears()
     this.yearpick._value = new Date().getFullYear()
+    this.cdRef.detectChanges()
   }
 
   generateYears(): any[] {

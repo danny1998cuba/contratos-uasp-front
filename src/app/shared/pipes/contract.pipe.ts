@@ -7,7 +7,7 @@ import { Contrato } from 'src/app/data/schema';
 export class ContractPipe implements PipeTransform {
 
   transform(cont: Contrato): string {
-    return (cont.numero ? cont.numero : 'N/N') + ' - ' + cont.idProveedor.nombre;
+    return cont.idProveedor ? (cont.numero ? cont.numero : 'N/N') + ' - ' + cont.idProveedor.nombre : 'No existe';
   }
 
 }

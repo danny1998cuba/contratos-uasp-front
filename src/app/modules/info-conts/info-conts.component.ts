@@ -65,7 +65,7 @@ export class InfoContsComponent implements OnInit, DoCheck {
   }
 
   loadProvs() {
-    this.provsService.getProviders().subscribe(
+    this.provsService.getAllProviders().subscribe(
       r => {
         if (!r.error) {
           this.providers = r.data;

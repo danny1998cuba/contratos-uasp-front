@@ -1,8 +1,26 @@
 <div class="modal">
     <div class="modal-confirm">
-        {{contract | json}}
+        <p class="title">{{contract ? (contract | contract) : ''}}</p>
+        <div class="box">
+            <div class="legend">
+                Dictamen ({{contract.idDictamen ? '' : 'no '}}dictaminado)
+            </div>
+            <div class="det" *ngIf="contract.idDictamen"><u>N&uacute;mero:</u> {{contract.idDictamen.numero}}</div>
+            <div class="det" *ngIf="contract.idDictamen">Contrato {{contract.idDictamen.aprobado ? 'aprobado' :
+                'desaprobado'}}</div>
+            <div class="det" *ngIf="contract.idDictamen">{{contract.idDictamen.observaciones}}</div>
+        </div>
 
-        <!-- TODO Formato para mostrar info -->
+        <div class="box">
+            <div class="legend">
+                Detalles del contrato ({{contract.numero ? '' : 'no '}}firmado)
+            </div>
+            <div class="det" *ngIf="contract.numero"><u>N&uacute;mero</u>: {{contract.numero}}</div>
+            <div class="det" *ngIf="contract.numero"><u>Fecha de frirma</u>: {{contract.fechaFirma}}</div>
+            <div class="det" *ngIf="contract.numero"><u>Fecha de vencimiento</u>: {{contract.fechaVenc}}
+                ({{contract.duracion}} meses)</div>
+            <div class="det" *ngIf="contract.numero">{{contract.observaciones}}</div>
+        </div>
 
         <div class="btns">
             <button id="cancel_btn" class="btn" (click)="closeModal()">Cancelar</button>

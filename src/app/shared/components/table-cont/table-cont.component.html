@@ -1,7 +1,8 @@
 <table mat-table [dataSource]="dataSource" #contsTable>
     <ng-container matColumnDef="idx">
         <th mat-header-cell *matHeaderCellDef width="7%"></th>
-        <td mat-cell *matCellDef="let index = index">{{index+1}}</td>
+        <td mat-cell *matCellDef="let index = index">{{(index + 1) +
+            (paginator ? paginator.pageIndex * paginator.pageSize : 0)}}</td>
     </ng-container>
 
     <ng-container matColumnDef="prov">

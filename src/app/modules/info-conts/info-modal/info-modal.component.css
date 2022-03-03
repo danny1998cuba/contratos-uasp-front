@@ -30,6 +30,28 @@
     justify-content: center;
 }
 
+.modal-confirm .btns {
+    margin-top: 1rem;
+    margin-bottom: auto !important;
+}
+
+.modal-confirm .box {
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid var(--secondary-color);
+    padding: 1rem 3rem;
+    font-size: .85rem;
+}
+
+.modal-confirm .box .legend {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.modal-confirm .box .det {
+    margin-bottom: 5px;
+}
+
 @media screen and (max-width : 991px) {
     .modal-confirm {
         width: 50%;

@@ -6,6 +6,7 @@ const BASE_ROUTE = `${env.uri}api`
 // Controllers Routes
 export const GESTION_ROUTES = {
     PROVIDERS: `${BASE_ROUTE}/proveedor`,
+    PROVIDERS_ALL: `${BASE_ROUTE}/proveedor/all`,
     CONTRATO: `${BASE_ROUTE}/contrato`,
     DICTAMEN: `${BASE_ROUTE}/dictamen`,
     USERS: `${BASE_ROUTE}/users`,

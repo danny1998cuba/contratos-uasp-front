@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
         },
         {
           title: 'Porcentaje de aprobación',
-          value: this.aprobs + '%',
+          value: (isNaN(this.aprobs) ? this.aprobs : this.aprobs.toFixed(2))  + '%',
           icon: faChartPie
         },
         {
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
         },
       ]
       this.isLoading = false
-    }, 1000);
+    }, 2000);
   }
 
   ngOnInit(): void {

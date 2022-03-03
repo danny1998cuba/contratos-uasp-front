@@ -26,6 +26,18 @@ export class ProviderService extends ApiClass {
       );
   }
 
+  getAllProviders(): Observable<ResponseHandler> {
+    const response = new ResponseHandler()
+    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS_ALL, { headers: this.headers })
+      .pipe(
+        map(r => {
+          response.data = r;
+          return response;
+        }),
+        catchError(this.error)
+      );
+  }
+
   getProviderById(id: number): Observable<ResponseHandler> {
     const response = new ResponseHandler()
     return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS + '/' + id, { headers: this.headers })
