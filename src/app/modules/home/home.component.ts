@@ -17,21 +17,17 @@ export class HomeComponent implements OnInit {
   public stats: IStatCard[] = []
   isLoading = true  //loader
 
-  currentUser!:User
-
   provs = 0; conts = 0; contY = 0; aprobs = 0; venc = 0
 
   constructor(
     private providersService: ProviderService,
-    private contractService: ContractService,
-    private authService: AuthService
+    private contractService: ContractService
   ) {
     this.countProvs()
     this.countConts()
     this.countContsYear()
     this.percentAprob()
     this.countVenc()
-    this.loadUser()
 
     setTimeout(() => {
       this.stats = [
@@ -74,16 +70,6 @@ export class HomeComponent implements OnInit {
       r => {
         if (!r.error) {
           this.provs = r.data.length
-        }
-      }
-    )
-  }
-
-  loadUser() {
-    this.authService.getUser.subscribe(
-      r => {
-        if (!r.error) {
-          this.currentUser = r.data
         }
       }
     )

@@ -1,6 +1,7 @@
 import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { LOGIN_ROUTES } from '../../constants';
@@ -12,13 +13,14 @@ import { ApiClass, ResponseHandler, User } from '../../schema';
 export class AuthService extends ApiClass {
 
   public nameUserLS = 'currentUser'
+  public sessionIdLS = 'JSESSIONID'
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cookies: CookieService
   ) {
     super()
-    let item = localStorage.getItem(this.nameUserLS)
   }
 
   get getUserFromLS(): User | undefined {
@@ -29,43 +31,17 @@ export class AuthService extends ApiClass {
       return undefined
   }
 
-  get getUser(): Observable<ResponseHandler> {
+  getUser(): Observable<ResponseHandler> {
+    console.log('en user')
     const response = new ResponseHandler()
     return this.http.get<any>(LOGIN_ROUTES.ACTIVE_USER,
-      { headers: this.headers })
+      { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
+          console.log('hice request')
           response.msg = "Usuario"
           response.data = r;
           response.status = HttpStatusCode.Ok
-
-          localStorage.removeItem(this.nameUserLS)
-
-          if (!response.error) {
-            this.router.navigateByUrl('/login')
-          }
-          return response;
-        }),
-        catchError(this.error)
-      );
-  }
-
-  get existUser(): boolean {
-    return localStorage.getItem(this.nameUserLS) ? true : false
-  }
-
-  login(username: string, password: string): Observable<ResponseHandler> {
-    const response = new ResponseHandler()
-    return this.http.post<any>(LOGIN_ROUTES.LOGIN,
-      { username: username, password: password },
-      { headers: this.headers })
-      .pipe(
-        map(r => {
-          response.msg = "Autenticado con exito"
-          console.log(r)
-          response.data = r;
-          response.status = HttpStatusCode.Ok
-          this.setUserToLS(r)
 
           if (!response.error) {
             this.router.navigateByUrl('/home')
@@ -76,17 +52,36 @@ export class AuthService extends ApiClass {
       );
   }
 
+  login(username: string, password: string): Observable<ResponseHandler> {
+    const response = new ResponseHandler()
+    return this.http.post<any>(LOGIN_ROUTES.LOGIN,
+      { username: username, password: password },
+      { headers: this.headers })
+      .pipe(
+        map(r => {
+          response.msg = "Autenticado con exito"
+          response.status = HttpStatusCode.Ok
+
+          this.cookies.set(this.sessionIdLS, r.msg)
+          this.router.navigateByUrl('/home')
+
+          return response;
+        }),
+        catchError(this.error)
+      );
+  }
+
   logout(): Observable<ResponseHandler> {
     const response = new ResponseHandler()
     return this.http.get<any>(LOGIN_ROUTES.LOGOUT,
-      { headers: this.headers })
+      { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
           response.msg = "Sesion cerrada con exito"
           response.data = r;
           response.status = HttpStatusCode.Ok
 
-          localStorage.removeItem(this.nameUserLS)
+          this.cookies.delete(this.sessionIdLS)
 
           if (!response.error) {
             this.router.navigateByUrl('/login')

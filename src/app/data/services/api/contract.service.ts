@@ -18,7 +18,7 @@ export class ContractService extends ApiClass {
 
   getContratos(): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.get<Contrato[]>(GESTION_ROUTES.CONTRATO, { headers: this.headers })
+    return this.http.get<Contrato[]>(GESTION_ROUTES.CONTRATO, { headers: this.headers, withCredentials:true })
       .pipe(
         map(r => {
           response.data = r
@@ -30,7 +30,7 @@ export class ContractService extends ApiClass {
 
   getContratoById(id: number): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.get<Contrato[]>(GESTION_ROUTES.CONTRATO + '/' + id, { headers: this.headers })
+    return this.http.get<Contrato[]>(GESTION_ROUTES.CONTRATO + '/' + id, { headers: this.headers, withCredentials:true  })
       .pipe(
         map(r => {
           response.data = r;
@@ -42,7 +42,7 @@ export class ContractService extends ApiClass {
 
   createContrato(value: Contrato): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.post<any>(GESTION_ROUTES.CONTRATO, value, { headers: this.headers })
+    return this.http.post<any>(GESTION_ROUTES.CONTRATO, value, { headers: this.headers, withCredentials:true  })
       .pipe(
         map(r => {
           response.data = r;
@@ -55,7 +55,7 @@ export class ContractService extends ApiClass {
 
   updateContrato(id: number, value: Contrato): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.put<any>(GESTION_ROUTES.CONTRATO + '/' + id, value, { headers: this.headers })
+    return this.http.put<any>(GESTION_ROUTES.CONTRATO + '/' + id, value, { headers: this.headers, withCredentials:true  })
       .pipe(
         map(r => {
           response.data = r;
@@ -68,7 +68,7 @@ export class ContractService extends ApiClass {
 
   deleteContrato(id: number): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.delete<any>(GESTION_ROUTES.CONTRATO + '/' + id, { headers: this.headers })
+    return this.http.delete<any>(GESTION_ROUTES.CONTRATO + '/' + id, { headers: this.headers, withCredentials:true  })
       .pipe(
         map(r => {
           response.data = r;
@@ -81,7 +81,7 @@ export class ContractService extends ApiClass {
 
   getContratosFiltered(filters: IContractFilters): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.get<Contrato[]>(this.processFilters(filters), { headers: this.headers })
+    return this.http.get<Contrato[]>(this.processFilters(filters), { headers: this.headers, withCredentials:true  })
       .pipe(
         map(r => {
           response.data = r

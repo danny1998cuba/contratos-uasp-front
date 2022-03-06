@@ -16,7 +16,7 @@ export class ProviderService extends ApiClass {
 
   getProviders(): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS, { headers: this.headers })
+    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS, { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
           response.data = r;
@@ -28,7 +28,7 @@ export class ProviderService extends ApiClass {
 
   getAllProviders(): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS_ALL, { headers: this.headers })
+    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS_ALL, { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
           response.data = r;
@@ -40,7 +40,7 @@ export class ProviderService extends ApiClass {
 
   getProviderById(id: number): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS + '/' + id, { headers: this.headers })
+    return this.http.get<Provider[]>(GESTION_ROUTES.PROVIDERS + '/' + id, { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
           response.data = r;
@@ -52,7 +52,7 @@ export class ProviderService extends ApiClass {
 
   createProvider(value: Provider): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.post<any>(GESTION_ROUTES.PROVIDERS, value, { headers: this.headers })
+    return this.http.post<any>(GESTION_ROUTES.PROVIDERS, value, { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
           response.data = r;
@@ -65,7 +65,7 @@ export class ProviderService extends ApiClass {
 
   updateProvider(id: number, value: Provider): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.put<any>(GESTION_ROUTES.PROVIDERS + '/' + id, value, { headers: this.headers })
+    return this.http.put<any>(GESTION_ROUTES.PROVIDERS + '/' + id, value, { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
           response.data = r;
@@ -78,7 +78,7 @@ export class ProviderService extends ApiClass {
 
   deleteProvider(id: number): Observable<ResponseHandler> {
     const response = new ResponseHandler()
-    return this.http.delete<any>(GESTION_ROUTES.PROVIDERS + '/' + id, { headers: this.headers })
+    return this.http.delete<any>(GESTION_ROUTES.PROVIDERS + '/' + id, { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
           response.data = r;

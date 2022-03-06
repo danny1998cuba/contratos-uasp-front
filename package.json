@@ -28,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.23",
+    "ngx-cookie-service": "^13.1.2",
     "ngy-year-picker": "^2.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

@@ -21,6 +21,7 @@ import { GestionModule } from './modules/gestion/gestion.module';
 import { FilterFormComponent } from './modules/info-conts/filter-form/filter-form.component';
 import { InfoModalComponent } from './modules/info-conts/info-modal/info-modal.component';
 import { AuthComponent } from './modules/auth/auth.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AuthComponent } from './modules/auth/auth.component';
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "es-ES" },
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
