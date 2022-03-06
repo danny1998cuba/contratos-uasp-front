@@ -1,0 +1,87 @@
+.login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login header {
+    padding: 0 2rem;
+}
+
+/* Login Page */
+.dark-btn-container {
+    align-self: flex-end;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+}
+
+.dark-btn-container #dark-btn {
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background: var(--secondary-color);
+    margin: 0 2rem;
+    border-radius: 2rem;
+    padding: 2rem;
+    color: var(--font-color);
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 0 10px 0 rgba(90, 90, 90, 0.5);
+}
+
+.login-container form {
+    position: relative !important;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8), inset 0 0 5px 2px rgba(0, 0, 0, 0.8);
+}
+
+.login-container .branding {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.login-container .branding img {
+    width: 60%;
+}
+
+.login-container .branding p {
+    font-weight: 600;
+    text-align: center;
+}
+
+/* End of Login Page */
+
+
+@media screen and (max-width : 991px) {
+    .login-container {
+        width: 50%;
+    }
+}
+
+@media(max-width: 768px) {
+    .login-container {
+        width: 60%;
+    }
+}

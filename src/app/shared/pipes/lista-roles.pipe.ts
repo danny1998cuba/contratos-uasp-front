@@ -9,7 +9,7 @@ export class ListaRolesPipe implements PipeTransform {
   transform(roles: Rol[]): unknown {
     let retorno = ''
     roles.forEach((r, i) => {
-      retorno += r.name;
+      retorno += r.mostrar;
       if (i < roles.length - 1) {
         retorno += ', '
       }

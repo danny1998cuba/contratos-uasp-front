@@ -19,10 +19,12 @@ export class PersonalComponent implements OnInit {
     password: '123',
     rolesList: [
       {
-        name: 'Administrador'
+        name: 'ADMIN',
+        mostrar: 'Administrador'
       },
       {
-        name:'Ususario estandar'
+        name:'USER',
+        mostrar:'Usuario'
       }
     ]
     // photo: 'assets/images/user-picture-default.png',

@@ -35,31 +35,6 @@ body {
     min-width: 480px;
 }
 
-body.login {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-body.freeze {
-    pointer-events: none;
-}
-
-body.freeze::after {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    content: '';
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-body.login header {
-    padding: 0 2rem;
-}
-
 /* Estilos generales */
 .btns {
     display: flex;
@@ -480,6 +455,45 @@ form .error {
 }
 
 /* Forms */
+
+/* Dark Btn */
+#dark-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--secondary-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dark-btn:hover {
+    background: var(--font-color);
+}
+
+#dark-btn fa-icon {
+    color: var(--font-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+#dark-btn:hover fa-icon {
+    color: var(--third-color);
+}
+
+#dark-btn.dark-btn-on fa-icon {
+    content: '\f185';
+}
+
+/* Dark Btn */
 
 
 /* Resposive */

@@ -65,7 +65,7 @@
             <label for="rol_add">Tipo de usuario *</label>
             <mat-select #rols="ngModel" required [(ngModel)]="_user.rolesList" [ngModelOptions]="{standalone:true}"
                 multiple placeholder="Seleccione al menos uno" [compareWith]="compareObjects">
-                <mat-option *ngFor="let rol of roles" [value]="rol">{{rol.name}}</mat-option>
+                <mat-option *ngFor="let rol of roles" [value]="rol">{{rol.mostrar}}</mat-option>
             </mat-select>
         </div>
         <div class="error" [hidden]="rols.valid||rols.pristine">

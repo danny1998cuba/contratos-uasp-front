@@ -20,6 +20,7 @@ import { InfoContsComponent } from './modules/info-conts/info-conts.component';
 import { GestionModule } from './modules/gestion/gestion.module';
 import { FilterFormComponent } from './modules/info-conts/filter-form/filter-form.component';
 import { InfoModalComponent } from './modules/info-conts/info-modal/info-modal.component';
+import { AuthComponent } from './modules/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { InfoModalComponent } from './modules/info-conts/info-modal/info-modal.c
     HelpComponent,
     InfoContsComponent,
     FilterFormComponent,
-    InfoModalComponent
+    InfoModalComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

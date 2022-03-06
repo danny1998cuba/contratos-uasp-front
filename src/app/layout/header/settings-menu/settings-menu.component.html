@@ -7,7 +7,7 @@
     <div class="user-profile">
         <img src="assets/images/user-picture-default.png" alt="">
         <div>
-            <p>Username</p>
+            <p>{{activeUser ? (activeUser | fullName) : (activeUser | undefined)}}</p>
             <a routerLink="/personal">Ver Su Perfil</a>
         </div>
     </div>
@@ -32,7 +32,7 @@
         <div class="settings-icon">
             <fa-icon [icon]="faSignOutAlt"></fa-icon>
         </div>
-        <a href="#">Cerrar Sesi&oacute;n <fa-icon [icon]="faAngleRight"></fa-icon></a>
+        <a href="#" (click)="logout()">Cerrar Sesi&oacute;n <fa-icon [icon]="faAngleRight"></fa-icon></a>
     </div>
 </div>
 <!--        End of settings-menu        -->

@@ -1,16 +1,23 @@
 import { environment as env } from "src/environments/environment";
 
 // Base Routes
-const BASE_ROUTE = `${env.uri}api`
+const BASE_ROUTE = `${env.uri}`
+const API_ROUTE = `${BASE_ROUTE}api`
+
+export const LOGIN_ROUTES = {
+    LOGIN: `${BASE_ROUTE}login`,
+    LOGOUT: `${BASE_ROUTE}logout`,
+    ACTIVE_USER: `${BASE_ROUTE}userAuth`
+}
 
 // Controllers Routes
 export const GESTION_ROUTES = {
-    PROVIDERS: `${BASE_ROUTE}/proveedor`,
-    PROVIDERS_ALL: `${BASE_ROUTE}/proveedor/all`,
-    CONTRATO: `${BASE_ROUTE}/contrato`,
-    DICTAMEN: `${BASE_ROUTE}/dictamen`,
-    USERS: `${BASE_ROUTE}/users`,
-    ROLES: `${BASE_ROUTE}/users/roles`
+    PROVIDERS: `${API_ROUTE}/proveedor`,
+    PROVIDERS_ALL: `${API_ROUTE}/proveedor/all`,
+    CONTRATO: `${API_ROUTE}/contrato`,
+    DICTAMEN: `${API_ROUTE}/dictamen`,
+    USERS: `${API_ROUTE}/users`,
+    ROLES: `${API_ROUTE}/users/roles`
 }
 // Contratos filter params
 export const FILTERS = {

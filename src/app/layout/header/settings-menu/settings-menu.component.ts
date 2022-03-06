@@ -1,5 +1,7 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faSignOutAlt, faAngleRight, faQuestion, faComment, faMoon, faSun, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { User } from 'src/app/data/schema';
+import { AuthService } from 'src/app/data/services/api';
 
 @Component({
   selector: 'app-settings-menu',
@@ -12,18 +14,27 @@ export class SettingsMenuComponent implements OnInit {
   faAngleRight = faAngleRight;
   faQuestion = faQuestion;
   faComment = faComment;
-  iconLight:IconDefinition
+  iconLight: IconDefinition
 
   isLight: boolean
   @Input() isOpen = false
 
-  constructor(private eRef: ElementRef) {
+  public activeUser!: User | undefined
+
+  constructor(
+    private authService: AuthService
+  ) {
     this.isLight = localStorage.getItem("theme") == "light";
-    this.iconLight = this.isLight ? faSun : faMoon
+    this.iconLight = this.isLight ? faMoon : faSun
+    this.loadActiveUser()
+  }
+
+  loadActiveUser() {
+    this.activeUser = this.authService.getUserFromLS
   }
 
   ngOnInit(): void {
-    
+
   }
 
   toggleDark() {
@@ -38,5 +49,15 @@ export class SettingsMenuComponent implements OnInit {
     }
   }
 
-  
+  logout() {
+    this.authService.logout().subscribe(r => {
+      if (r.error) {
+        console.log('algo paso ' + r.msg)
+      } else {
+        console.log(r)
+      }
+    })
+  }
+
+
 }

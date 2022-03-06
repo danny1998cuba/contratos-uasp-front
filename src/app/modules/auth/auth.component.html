@@ -1,0 +1,52 @@
+<div class="login">
+    <header>
+        <div class="hidden"></div>
+        <div class="dark-btn-container">
+            <div id="dark-btn" (click)="toggleDark()" [ngClass]="isLight?'':'dark-btn-on'">
+                <fa-icon [icon]="iconLight"></fa-icon>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <section class="login-container">
+            <div class="branding">
+                <img src="assets/images/logo-white.png" alt="">
+                <p>Sistema para la gesti&oacute;n de contratos</p>
+            </div>
+
+            <form (ngSubmit)="submitLogin()">
+                <h4>Iniciar Sesi&oacute;n</h4>
+
+                <div class="form-group">
+                    <div class="my-form-control">
+                        <label for="name_add">Usuario *</label>
+                        <input type="text" placeholder="Usuario" #usernameIn="ngModel" required [(ngModel)]="username"
+                            [ngModelOptions]="{standalone:true}" maxlength="50">
+                    </div>
+                    <div class="error" [hidden]="usernameIn.valid||usernameIn.pristine">
+                        {{usernameIn.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="my-form-control">
+                        <label for="name_add">Contrase&ntilde;a *</label>
+                        <input type="password" placeholder="Contrase&ntilde;a" #pass="ngModel" required
+                            [(ngModel)]="password" [ngModelOptions]="{standalone:true}" maxlength="50">
+                    </div>
+                    <div class="error" [hidden]="pass.valid||pass.pristine">
+                        {{pass.errors | ngModelErrorsTranslate}}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn"
+                    [disabled]="!isValid([usernameIn, pass])">Confirmar</button>
+            </form>
+        </section>
+    </div>
+
+    <app-growl #growl></app-growl>
+
+    <app-footer></app-footer>
+</div>
