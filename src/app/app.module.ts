@@ -11,7 +11,6 @@ import { SharedModule } from './shared/shared.module';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
-import { SettingsMenuComponent } from './layout/header/settings-menu/settings-menu.component';
 import { HomeComponent } from './modules/home/home.component';
 import { PersonalComponent } from './modules/personal/personal.component';
 import { HelpComponent } from './modules/help/help.component';
@@ -29,7 +28,6 @@ import { CookieService } from 'ngx-cookie-service';
     SkeletonComponent,
     FooterComponent,
     HeaderComponent,
-    SettingsMenuComponent,
     HomeComponent,
     PersonalComponent,
     HelpComponent,

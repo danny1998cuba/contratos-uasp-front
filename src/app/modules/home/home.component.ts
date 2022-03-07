@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faCalendarCheck, faCalendarTimes, faChartPie, faFile, faUser, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faCalendarTimes, faChartPie, faFile, faUser, faArrowRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { CARDS_INFO } from 'src/app/data/constants';
 import { ICardData, IStatCard } from 'src/app/data/interfaces';
 import { User } from 'src/app/data/schema';
@@ -13,7 +13,7 @@ import { AuthService, ContractService, ProviderService } from 'src/app/data/serv
 export class HomeComponent implements OnInit {
 
   public cards: ICardData[] = CARDS_INFO
-  public faArrowRight = faArrowRight
+  public faArrowRight = faArrowRight; faSignOutAlt = faSignOutAlt
   public stats: IStatCard[] = []
   isLoading = true  //loader
 
@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private providersService: ProviderService,
-    private contractService: ContractService
+    private contractService: ContractService,
+    private authService: AuthService
   ) {
     this.countProvs()
     this.countConts()
@@ -112,4 +113,14 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  logout() {
+    this.authService.logout().subscribe(r => {
+      if (r.error) {
+        console.log('algo paso ' + r.msg)
+      } else {
+        console.log(r)
+      }
+    })
+
+  }
 }

@@ -2,10 +2,10 @@ import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { LOGIN_ROUTES,STORAGE_KEYS } from '../../constants';
-import { ApiClass, ResponseHandler, User } from '../../schema';
+import { LOGIN_ROUTES, STORAGE_KEYS } from '../../constants';
+import { ApiClass, ResponseHandler } from '../../schema';
 
 @Injectable({
   providedIn: 'root'
@@ -45,16 +45,14 @@ export class AuthService extends ApiClass {
       { headers: this.headers, withCredentials: true })
       .pipe(
         map(r => {
-          response.msg = "Sesion cerrada con exito"
-          response.data = r;
-          response.status = HttpStatusCode.Ok
-
           this.cookies.delete(STORAGE_KEYS.SESSIONID)
           localStorage.removeItem(STORAGE_KEYS.USER)
 
-          if (!response.error) {
-            this.router.navigateByUrl('/login')
-          }
+          response.msg = "Sesion cerrada con exito"
+          response.status = HttpStatusCode.Ok
+
+          this.router.navigateByUrl('/login')
+
           return response;
         }),
         catchError(this.error)

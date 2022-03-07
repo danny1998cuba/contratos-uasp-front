@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { Authenticated } from 'src/app/core/utils';
 import { Rol, User } from 'src/app/data/schema';
 
 @Component({
@@ -7,35 +8,26 @@ import { Rol, User } from 'src/app/data/schema';
   templateUrl: './personal.component.html',
   styleUrls: ['./personal.component.css']
 })
-export class PersonalComponent implements OnInit {
+export class PersonalComponent {
 
-  public user: User = {
-    id: 0,
-    username: 'danny98cuba',
-    nombre: 'Daniel',
-    apellidoP: 'Gonzalez',
-    apellidoM: 'Cuetara',
-    enabled: true,
-    password: '123',
-    rolesList: [
-      {
-        name: 'ADMIN',
-        mostrar: 'Administrador'
-      },
-      {
-        name:'USER',
-        mostrar:'Usuario'
-      }
-    ]
-    // photo: 'assets/images/user-picture-default.png',
-    // role: 'Administrador'
-  }
+  public user: User
 
   angle = faAngleRight
 
-  constructor() { }
+  constructor() {
+    let u = Authenticated.getUserFromLS
+    if (u) {
+      this.user = u
+    } else {
+      this.user = new User()
+    }
+  }
 
-  ngOnInit(): void {
+  isAdmin():boolean {
+    return Authenticated.isAdmin
+  }
+  isCont():boolean {
+    return Authenticated.isCont
   }
 
 }

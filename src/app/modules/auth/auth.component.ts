@@ -9,7 +9,7 @@ import { GrowlComponent } from 'src/app/shared/components';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
 
   username: string = ''
   password: string = ''
@@ -24,9 +24,6 @@ export class AuthComponent implements OnInit {
   ) {
     this.isLight = localStorage.getItem("theme") == "light";
     this.iconLight = this.isLight ? faMoon : faSun
-  }
-
-  ngOnInit(): void {
   }
 
   toggleDark() {

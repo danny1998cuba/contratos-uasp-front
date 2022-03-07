@@ -4,9 +4,20 @@
         <h2>Sistema para la gesti&oacute;n de contratos</h2>
     </div>
 
-    <div class="user-menu" (click)="settingsOpened = !settingsOpened">
-        <img src="assets/images/user-picture-default.png" alt="">
+    <div class="control">
+        <div class="user-profile">
+            <img src="assets/images/user-picture-default.png" alt="">
+            <div>
+                <p>{{activeUser ? (activeUser | fullName) : (activeUser | undefined)}}</p>
+                <a routerLink="/personal">Ver Su Perfil</a>
+            </div>
+        </div>
+
+        <div class="dark-btn-container">
+            <div id="dark-btn" (click)="toggleDark()" [ngClass]="isLight?'':'dark-btn-on'">
+                <fa-icon [icon]="iconLight"></fa-icon>
+            </div>
+        </div>
     </div>
 
-    <app-settings-menu class="settings-menu" [class.settings-menu-height]="settingsOpened" [isOpen]="settingsOpened"></app-settings-menu>
 </header>

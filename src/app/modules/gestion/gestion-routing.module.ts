@@ -7,18 +7,13 @@ import { UsersComponent } from './users/users.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-    },
-    {
         path: 'providers',
         component: ProvidersComponent,
         canActivate: [AuthGuard, ContGuard]
     },
     {
         path: 'contracts',
-        component:ContractsComponent,
+        component: ContractsComponent,
         canActivate: [AuthGuard, ContGuard]
     },
     {
@@ -28,7 +23,7 @@ export const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: '/home',
+        redirectTo: '/login',
         pathMatch: 'full'
     }
 ]

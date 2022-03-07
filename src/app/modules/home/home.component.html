@@ -1,4 +1,13 @@
 <ng-container *ngIf="!isLoading; else noData;">
+    <div class="logout">        
+        <div class="settings-links" (click)="logout()">
+            <a href="#">Cerrar Sesi&oacute;n</a>
+            <div class="settings-icon">
+                <fa-icon [icon]="faSignOutAlt"></fa-icon>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <app-title text="Estad&iacute;sticas"></app-title>
 

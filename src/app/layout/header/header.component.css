@@ -64,28 +64,64 @@ header .user-menu img {
     object-fit: cover;
 }
 
-.settings-menu {
-    position: absolute;
-    width: 90%;
-    max-width: 350px;
-    background: var(--primary-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    border-radius: 4px;
-    overflow: hidden;
-    top: 90%;
-    right: 2rem;
-    max-height: 0;
-    transition: max-height 0.3s;
-    z-index: 1000;
+.user-profile {
+    display: flex;
+    align-items: center;
 }
 
-.settings-menu-height {
-    max-height: 450px;
+.user-profile img {
+    width: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
+
+.user-profile p {
+    font-size: .9rem;
+    margin-bottom: -5px;
+    font-weight: 500;
+    color: var(--font-color);
+}
+
+.user-profile small {
+    font-size: 12px;
+}
+
+.user-profile a {
+    font-size: 12px;
+    color: var(--third-color);
+    text-decoration: none;
+}
+
+header .control {
+    display: flex;
+    gap: 1rem;
+}
+
+.dark-btn-container {
+    align-self: flex-end;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+}
+
+.dark-btn-container #dark-btn {
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
 
 @media screen and (max-width : 991px) {
     header .branding h2 {
         font-size: 1.2rem;
+    }
+    .user-profile {
+        font-size: 80%;
+    }
+    header .control {
+        gap: .5rem;
     }
 }
 
@@ -98,5 +134,12 @@ header .user-menu img {
 
     header .branding h2 {
         font-size: 1rem;
+    }
+    .user-profile {
+        font-size: 60%;
+    }
+    header .control {
+        flex-direction: column-reverse;
+        gap: .2rem;
     }
 }

@@ -26,9 +26,10 @@
                     <u>Privilegios</u>
                 </p>
                 <ul>
-                    <li><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de proveedores</li>
-                    <li><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de contratos</li>
-                    <li><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de usuarios</li>
+                    <li><fa-icon [icon]="angle"></fa-icon>Consulta de contratos</li>
+                    <li *ngIf="isCont()"><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de proveedores</li>
+                    <li *ngIf="isCont()"><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de contratos</li>
+                    <li *ngIf="isAdmin()"><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de usuarios</li>
                 </ul>
             </div>
         </div>
