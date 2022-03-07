@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Authenticated } from 'src/app/core/utils';
 import { ICardData } from 'src/app/data/interfaces';
 
 @Component({
@@ -13,6 +14,19 @@ export class NCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  enabled(): boolean {
+    switch (this.data.enabled) {
+      case 'ADMIN':
+        return !Authenticated.isAdmin
+        break
+      case 'CONT':
+        return !Authenticated.isCont
+        break
+      default:
+        return true
+    }
   }
 
 }

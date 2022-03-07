@@ -3,5 +3,6 @@ export interface ICardData {
     description:string,
     image:string,
     router_Link:string,
-    small?:string
+    small?:string,
+    enabled:"CONT" | "ADMIN"
 }

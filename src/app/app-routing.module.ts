@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
-import { NoAuthGuard } from './core/guards/no-auth.guard';
+import { AuthGuard, NoAuthGuard } from './core/guards';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 import { AuthComponent } from './modules/auth/auth.component';
 import { HelpComponent } from './modules/help/help.component';

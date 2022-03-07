@@ -8,12 +8,12 @@
                 <p>
                     {{data.description}}
                     <br/>
-                    <small *ngIf="data.small">{{data.small}}</small>
+                    <small *ngIf="data.small && enabled()">{{data.small}}</small>
                 </p>
             </div>
 
             
-            <a [routerLink]="data.router_Link">Gestionar</a>
+            <a [routerLink]="data.router_Link" [class.disabled]="enabled()">Gestionar</a>
         </div>
     </div>
 </div>

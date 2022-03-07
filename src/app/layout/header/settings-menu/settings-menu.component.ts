@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faSignOutAlt, faAngleRight, faQuestion, faComment, faMoon, faSun, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { Authenticated } from 'src/app/core/utils';
 import { User } from 'src/app/data/schema';
 import { AuthService } from 'src/app/data/services/api';
 
@@ -30,7 +31,7 @@ export class SettingsMenuComponent implements OnInit {
   }
 
   loadActiveUser() {
-    this.activeUser = this.authService.getUserFromLS
+    this.activeUser = Authenticated.getUserFromLS
   }
 
   ngOnInit(): void {

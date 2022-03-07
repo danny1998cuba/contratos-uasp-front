@@ -33,7 +33,7 @@ export class FormUserComponent {
   }
 
   isValid(params: NgModel[]) {
-    return params.filter(f => !f.valid).length == 0;
+    return params.filter(f => f.status!='DISABLED' ? !f.valid : false).length == 0;
   }
 
   compareObjects(ob1: any, ob2: any) { return (ob1 && ob2) ? ob1.id === ob2.id : false }

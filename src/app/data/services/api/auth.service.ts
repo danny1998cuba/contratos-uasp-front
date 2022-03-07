@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { LOGIN_ROUTES } from '../../constants';
+import { LOGIN_ROUTES,STORAGE_KEYS } from '../../constants';
 import { ApiClass, ResponseHandler, User } from '../../schema';
 
 @Injectable({
@@ -12,44 +12,12 @@ import { ApiClass, ResponseHandler, User } from '../../schema';
 })
 export class AuthService extends ApiClass {
 
-  public nameUserLS = 'currentUser'
-  public sessionIdLS = 'JSESSIONID'
-
   constructor(
     private http: HttpClient,
     private router: Router,
     private cookies: CookieService
   ) {
     super()
-  }
-
-  get getUserFromLS(): User | undefined {
-    const item = localStorage.getItem(this.nameUserLS)
-    if (item)
-      return JSON.parse(item)
-    else
-      return undefined
-  }
-
-  getUser(): Observable<ResponseHandler> {
-    console.log('en user')
-    const response = new ResponseHandler()
-    return this.http.get<any>(LOGIN_ROUTES.ACTIVE_USER,
-      { headers: this.headers, withCredentials: true })
-      .pipe(
-        map(r => {
-          console.log('hice request')
-          response.msg = "Usuario"
-          response.data = r;
-          response.status = HttpStatusCode.Ok
-
-          if (!response.error) {
-            this.router.navigateByUrl('/home')
-          }
-          return response;
-        }),
-        catchError(this.error)
-      );
   }
 
   login(username: string, password: string): Observable<ResponseHandler> {
@@ -62,8 +30,8 @@ export class AuthService extends ApiClass {
           response.msg = "Autenticado con exito"
           response.status = HttpStatusCode.Ok
 
-          this.cookies.set(this.sessionIdLS, r.msg)
-          this.router.navigateByUrl('/home')
+          this.cookies.set(STORAGE_KEYS.SESSIONID, r.msg)
+          this.getUser().subscribe()
 
           return response;
         }),
@@ -81,7 +49,8 @@ export class AuthService extends ApiClass {
           response.data = r;
           response.status = HttpStatusCode.Ok
 
-          this.cookies.delete(this.sessionIdLS)
+          this.cookies.delete(STORAGE_KEYS.SESSIONID)
+          localStorage.removeItem(STORAGE_KEYS.USER)
 
           if (!response.error) {
             this.router.navigateByUrl('/login')
@@ -90,10 +59,32 @@ export class AuthService extends ApiClass {
         }),
         catchError(this.error)
       );
+  }
 
+  getUser(): Observable<ResponseHandler> {
+    console.log('en user')
+    const response = new ResponseHandler()
+    return this.http.get<any>(LOGIN_ROUTES.ACTIVE_USER,
+      { headers: this.headers, withCredentials: true })
+      .pipe(
+        map(r => {
+          console.log('hice request')
+          response.msg = "Usuario"
+          response.data = r;
+          response.status = HttpStatusCode.Ok
+
+          this.setUserToLS(r)
+
+          if (!response.error) {
+            this.router.navigateByUrl('/home')
+          }
+          return response;
+        }),
+        catchError(this.error)
+      );
   }
 
   private setUserToLS(data: any) {
-    localStorage.setItem(this.nameUserLS, JSON.stringify(data))
+    localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(data))
   }
 }

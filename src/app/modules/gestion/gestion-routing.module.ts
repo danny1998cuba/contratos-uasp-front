@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { AdminGuard, AuthGuard, ContGuard } from 'src/app/core/guards';
 import { ContractsComponent } from './contracts/contracts.component';
 import { ProvidersComponent } from './providers/providers.component';
 import { UsersComponent } from './users/users.component';
@@ -14,17 +14,17 @@ export const routes: Routes = [
     {
         path: 'providers',
         component: ProvidersComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, ContGuard]
     },
     {
         path: 'contracts',
         component:ContractsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, ContGuard]
     },
     {
         path: 'users',
         component: UsersComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminGuard]
     },
     {
         path: '**',
