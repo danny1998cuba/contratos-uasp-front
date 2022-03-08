@@ -21,6 +21,11 @@ export class AuthService extends ApiClass {
   }
 
   login(username: string, password: string): Observable<ResponseHandler> {
+
+    if (this.cookies.check(STORAGE_KEYS.SESSIONID)) {
+      this.cookies.delete(STORAGE_KEYS.SESSIONID)
+    }
+
     const response = new ResponseHandler()
     return this.http.post<any>(LOGIN_ROUTES.LOGIN,
       { username: username, password: password },

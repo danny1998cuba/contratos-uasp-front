@@ -15,7 +15,7 @@ export class TableProvComponent implements OnInit, DoCheck, AfterViewInit {
   @Output() changeSelected = new EventEmitter()
 
   dataSource !: MatTableDataSource<Provider>
-  columnas = ['numero', 'nombre', 'redirect']
+  columnas = ['numero', 'nombre']
   faIcon = faList;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

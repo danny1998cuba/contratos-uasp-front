@@ -2,7 +2,7 @@ import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { GESTION_ROUTES } from '../../constants';
+import { GESTION_ROUTES, PASS_ROUTE } from '../../constants';
 import { ApiClass, ResponseHandler, Rol, User } from '../../schema';
 
 @Injectable({
@@ -82,6 +82,21 @@ export class UserService extends ApiClass {
       .pipe(
         map(r => {
           response.data = r;
+          response.status = HttpStatusCode.Ok
+          return response;
+        }),
+        catchError(this.error)
+      );
+  }
+
+  changePass(id: number, oldPass: string, newPass: string): Observable<ResponseHandler> {
+    const response = new ResponseHandler()
+    return this.http.post<any>(PASS_ROUTE + '/' + id,
+      { oldPassword: oldPass, newPassword: newPass },
+      { headers: this.headers, withCredentials: true })
+      .pipe(
+        map(r => {
+          response.data = r.msg;
           response.status = HttpStatusCode.Ok
           return response;
         }),

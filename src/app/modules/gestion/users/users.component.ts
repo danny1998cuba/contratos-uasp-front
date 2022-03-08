@@ -78,7 +78,6 @@ export class UsersComponent implements DoCheck {
   }
 
   modProvider(user: User) {
-    console.log(user)
     this.userService.updateUser(user.id, user).subscribe(
       r => {
         if (r.status == HttpStatusCode.Ok) {

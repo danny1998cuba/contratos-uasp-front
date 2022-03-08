@@ -19,6 +19,9 @@ export const GESTION_ROUTES = {
     USERS: `${API_ROUTE}/users`,
     ROLES: `${API_ROUTE}/users/roles`
 }
+
+export const PASS_ROUTE = `${GESTION_ROUTES.USERS}/pass`
+
 // Contratos filter params
 export const FILTERS = {
     PROV: 'prov=',

@@ -13,7 +13,6 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { HomeComponent } from './modules/home/home.component';
 import { PersonalComponent } from './modules/personal/personal.component';
-import { HelpComponent } from './modules/help/help.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoContsComponent } from './modules/info-conts/info-conts.component';
 import { GestionModule } from './modules/gestion/gestion.module';
@@ -21,6 +20,8 @@ import { FilterFormComponent } from './modules/info-conts/filter-form/filter-for
 import { InfoModalComponent } from './modules/info-conts/info-modal/info-modal.component';
 import { AuthComponent } from './modules/auth/auth.component';
 import { CookieService } from 'ngx-cookie-service';
+import { PassFormComponent } from './modules/personal/pass-form/pass-form.component';
+import { InfoFormComponent } from './modules/personal/info-form/info-form.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +31,12 @@ import { CookieService } from 'ngx-cookie-service';
     HeaderComponent,
     HomeComponent,
     PersonalComponent,
-    HelpComponent,
     InfoContsComponent,
     FilterFormComponent,
     InfoModalComponent,
-    AuthComponent
+    AuthComponent,
+    PassFormComponent,
+    InfoFormComponent
   ],
   imports: [
     BrowserModule,

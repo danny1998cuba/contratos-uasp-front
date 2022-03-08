@@ -1,0 +1,39 @@
+<form id="{{id}}" [class.showing]="styles.showing" [ngStyle]="styles.style" #myForm="ngForm"
+    (ngSubmit)="submitEvent.emit({oldPass, newPass})">
+    <h4>{{title}}</h4>
+
+    <div class="form-group">
+        <div class="my-form-control">
+            <label for="pass_add">Contrase&ntilde;a anterior *</label>
+            <input type="password" placeholder="Contrase&ntilde;a anterior" #oldpass="ngModel" required
+                [(ngModel)]="oldPass" [ngModelOptions]="{standalone:true}" maxlength="64">
+        </div>
+        <div class="error" [hidden]="oldpass.valid||oldpass.pristine">
+            {{oldpass.errors | ngModelErrorsTranslate}}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="my-form-control">
+            <label for="pass_add">Contrase&ntilde;a nueva *</label>
+            <input type="password" placeholder="Contrase&ntilde;a nueva" #newpass="ngModel" required
+                [(ngModel)]="newPass" [ngModelOptions]="{standalone:true}" maxlength="64">
+        </div>
+        <div class="error" [hidden]="newpass.valid||newpass.pristine">
+            {{newpass.errors | ngModelErrorsTranslate}}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="my-form-control">
+            <label for="pass_add">Repetir Contrase&ntilde;a nueva *</label>
+            <input type="password" placeholder="Contrase&ntilde;a nueva" #newpass2="ngModel" required
+                [(ngModel)]="newPass2" [ngModelOptions]="{standalone:true}" maxlength="64">
+        </div>
+        <div class="error" [hidden]="newpass2.valid||newpass2.pristine">
+            {{newpass2.errors | ngModelErrorsTranslate}}
+        </div>
+    </div>
+
+    <button type="submit" class="btn" [disabled]="!isValid([oldpass,newpass,newpass2])">{{btn_text}}</button>
+</form>

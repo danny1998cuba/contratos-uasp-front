@@ -1,40 +1,74 @@
-<div class="content">
-    <div class="side" style="--basis:45%">
-        <div class="profile-info">
-            <div class="img-box">
-                <img src="assets/images/user-picture-default.png" alt="">
-                <span class="state" style="--bg-color:{{user.enabled ? 'green':'red'}};"></span>
+<ng-container *ngIf="!isLoading; else noData;">
+    <div class="content">
+        <div class="side" style="--basis:45%">
+            <div class="profile-info">
+                <div class="img-box">
+                    <img src="assets/images/user-picture-default.png" alt="">
+                    <span class="state" style="--bg-color:{{user.enabled ? 'green':'red'}};"></span>
+                </div>
+
+                <p id="fullname_label">
+                    {{user | fullName}}
+                    <br>
+                    <small>(<span id="username_label">{{user.username}}</span>)</small>
+                </p>
+
+                <hr>
+
+                <div class="extra">
+                    <app-title text="Informaci&oacute;n adicional"></app-title>
+
+                    <p>Correo Electr&oacute;nico: <span>{{user.email | undefined}}</span></p>
+                    <p>Tel&eacute;fono: <span>{{user.telefono | undefined}}</span></p>
+                    <p>Tipo de usuario: <span>{{user.rolesList | listaRoles}}</span></p>
+
+                    <!-- TODO -->
+                    <p style="margin-bottom: 5px;">
+                        <u>Privilegios</u>
+                    </p>
+                    <ul>
+                        <li>
+                            <fa-icon [icon]="angle"></fa-icon>Consulta de contratos
+                        </li>
+                        <li *ngIf="isCont()">
+                            <fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de proveedores
+                        </li>
+                        <li *ngIf="isCont()">
+                            <fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de contratos
+                        </li>
+                        <li *ngIf="isAdmin()">
+                            <fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de usuarios
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="side" style="--basis:45%">
+            <app-title text="Ajustes de perfil"></app-title>
+
+            <!-- Btns -->
+            <div class="btns">
+                <app-action-button (clicked)="addBtn()" [icon]="faEdit" [formSelected]="true"
+                    tooltipText="Modificar información" #_addBtn></app-action-button>
+                <app-action-button (clicked)="modBtn()" [icon]="faKey" [formSelected]="false"
+                    tooltipText="Cambio de contraseña" #_modBtn>
+                </app-action-button>
             </div>
 
-            <p id="fullname_label">
-                {{user | fullName}}
-                <br>
-                <small>(<span id="username_label">{{user.username}}</span>)</small>
-            </p>
-
-            <hr>
-
-            <div class="extra">
-                <app-title text="Informaci&oacute;n adicional"></app-title>
-
-                <p>Correo Electr&oacute;nico: <span>{{user.email | undefined}}</span></p>
-                <p>Tel&eacute;fono: <span>{{user.telefono | undefined}}</span></p>
-                <p>Tipo de usuario: <span>{{user.rolesList | listaRoles}}</span></p>
-                
-                <!-- TODO -->
-                <p style="margin-bottom: 5px;">
-                    <u>Privilegios</u>
-                </p>
-                <ul>
-                    <li><fa-icon [icon]="angle"></fa-icon>Consulta de contratos</li>
-                    <li *ngIf="isCont()"><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de proveedores</li>
-                    <li *ngIf="isCont()"><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de contratos</li>
-                    <li *ngIf="isAdmin()"><fa-icon [icon]="angle"></fa-icon>Gesti&oacute;n de usuarios</li>
-                </ul>
+            <div class="form-container" [ngStyle]="style">
+                <app-info-form #infoForm id="form1" title="Modificar su información" btn_text="Confirmar"
+                    [styles]="{showing:true}" [user]="user" (submitEvent)="modInfo($event)"></app-info-form>
+                <app-pass-form #passForm id="form2" title="Cambio de contraseña" btn_text="Modificar"
+                    [styles]="{showing:false}" (submitEvent)="changePass($event)">
+                </app-pass-form>
             </div>
         </div>
     </div>
-    <div class="side" style="--basis:45%">
-        <app-title text="Ajustes de perfil"></app-title>
-    </div>
-</div>
+    
+    <app-growl #growl></app-growl>
+</ng-container>
+
+
+<ng-template #noData>
+    <app-loader></app-loader>
+</ng-template>
