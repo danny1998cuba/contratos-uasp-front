@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-const { jsPDF } = require('jspdf');
-require('jspdf-autotable');
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class ExportService {
   }
 
   private preparePDF(data: any[], texts: string[]): any {
-    const doc = new jsPDF({ orientation: 'l', format: 'letter' })
+    const doc = new jsPDF({ orientation: 'l', format: 'letter', compress: true })
 
     var img = new Image()
     img.src = 'assets/images/logo-white.png'
@@ -35,6 +36,7 @@ export class ExportService {
     doc.setFontSize(9)
     doc.text(texts[1], (this.hor_margin + 47 + this.hor_margin), (this.vert_margin * 1.3 + 8), { align: 'left', baseline: 'middle' })
 
+    //@ts-ignore
     doc.autoTable(this.prepareTable(data));
 
     return doc

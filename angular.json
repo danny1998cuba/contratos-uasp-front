@@ -31,7 +31,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jspdf/dist/jspdf.es.min.js",
+              "node_modules/jspdf/dist/jspdf.min.js",
               "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js",
               "src/assets/js/utils.js"
             ]
@@ -103,7 +103,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jspdf/dist/jspdf.es.min.js",
+              "node_modules/jspdf/dist/jspdf.min.js",
               "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js",
               "src/assets/js/utils.js"
             ]
