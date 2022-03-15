@@ -10,6 +10,7 @@ export class ActionButtonComponent {
 
   @Input() icon !: IconDefinition
   @Input() tooltipText: string = "default"
+  @Input() id: string = ""
   @Input() formSelected: boolean = false
   @Input() _disabled: boolean = false
 

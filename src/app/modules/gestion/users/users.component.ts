@@ -1,11 +1,17 @@
 import { HttpStatusCode } from '@angular/common/http';
-import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEdit, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Rol, User } from 'src/app/data/schema';
 import { UserService } from 'src/app/data/services/api';
-import { ActionButtonComponent, GrowlComponent, ModalComponent } from 'src/app/shared/components';
+import { GrowlComponent, ModalComponent } from 'src/app/shared/components';
 import { FormUserComponent } from './form-user/form-user.component';
+
+declare var resizeFormContainer: any;
+declare var common: {
+  add: () => void,
+  mod: () => void
+};
 
 @Component({
   selector: 'app-users',
@@ -16,16 +22,12 @@ export class UsersComponent implements DoCheck {
 
   public data: User[] = []
   public roles: Rol[] = []
-  public style = {
-    height: '0px'
-  }
+  
   isLoading = true
   faPlus = faPlus; faEdit = faEdit; faTrash = faTrash
 
   @ViewChild('addForm') form1 !: FormUserComponent;
   @ViewChild('modForm') form2 !: FormUserComponent;
-  @ViewChild('_addBtn') _addBtn !: ActionButtonComponent;
-  @ViewChild('_modBtn') _modBtn !: ActionButtonComponent;
   @ViewChild('modal') modal !: ModalComponent;
   @ViewChild('growl') growl !: GrowlComponent;
 
@@ -38,7 +40,7 @@ export class UsersComponent implements DoCheck {
 
   ngDoCheck(): void {
     if (this.form1 || this.form2) {
-      this.resizeFormContainer()
+      resizeFormContainer()
     }
   }
 
@@ -47,13 +49,6 @@ export class UsersComponent implements DoCheck {
     this.selected = val
     if (!this.selected && this.form2 && this.form2.styles.showing) {
       this.addBtn()
-    }
-  }
-
-  resizeFormContainer() {
-    var form = document.querySelector('.form-container form.showing');
-    if (form) {
-      this.style.height = form.scrollHeight + 'px';
     }
   }
 
@@ -140,37 +135,15 @@ export class UsersComponent implements DoCheck {
   }
 
   addBtn() {
-    this.form1.styles.style = {
-      transform: 'translateX(0px)'
-    }
-    this.form2.styles.style = {
-      transform: 'translateX(0px)'
-    }
-
+    common.add()
     this.form1.styles.showing = true
     this.form2.styles.showing = false
-
-    this._addBtn.formSelected = true
-    this._modBtn.formSelected = false
-
-    this.resizeFormContainer()
   }
 
   modBtn() {
-    this.form1.styles.style = {
-      transform: 'translateX(-110%)'
-    }
-    this.form2.styles.style = {
-      transform: 'translateX(-110%)'
-    }
-
+    common.mod()
     this.form1.styles.showing = false
     this.form2.styles.showing = true
-
-    this._addBtn.formSelected = false
-    this._modBtn.formSelected = true
-
-    this.resizeFormContainer()
   }
 
   delBtn() {

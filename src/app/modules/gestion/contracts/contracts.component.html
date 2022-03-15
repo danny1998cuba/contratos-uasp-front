@@ -10,9 +10,9 @@
             <!-- Btns -->
             <div class="btns">
                 <app-action-button (clicked)="addBtn()" [icon]="faPlus" [formSelected]="true"
-                    tooltipText="Agregar proveedor nuevo" #_addBtn></app-action-button>
+                    tooltipText="Agregar proveedor nuevo" [id]="'btn_1'"></app-action-button>
                 <app-action-button (clicked)="modBtn()" [icon]="faEdit" [formSelected]="false"
-                    [_disabled]="selected==null" tooltipText="Modificar proveedor seleccionado" #_modBtn>
+                    [_disabled]="selected==null" tooltipText="Modificar proveedor seleccionado" [id]="'btn_2'">
                 </app-action-button>
             </div>
 
@@ -21,11 +21,11 @@
             <p class="selected-prov">{{selected? (selected | contract) : (selected | undefined)}}</p>
 
             <!-- Forms -->
-            <div class="form-container" [ngStyle]="style">
-                <app-form-cont title="Nuevo contrato" btn_text="Agregar" id="form1" #addForm
+            <div class="form-container">
+                <app-form-cont title="Nuevo contrato" btn_text="Agregar" [id]="'form1'" #addForm
                     (submitEvent)="addProvider($event)" [styles]="{showing:true}" [providers]="providers">
                 </app-form-cont>
-                <app-form-cont title="Modificar contrato seleccionado" btn_text="Modificar" id="form2" #modForm
+                <app-form-cont title="Modificar contrato seleccionado" btn_text="Modificar" [id]="'form2'" #modForm
                     (submitEvent)="modProvider($event)" [styles]="{showing:false}" [contrato]="selected"
                     [providers]="providers" [isMod]="true">
                 </app-form-cont>

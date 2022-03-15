@@ -32,15 +32,16 @@
             ],
             "scripts": [
               "node_modules/jspdf/dist/jspdf.es.min.js",
-              "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"
+              "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js",
+              "src/assets/js/utils.js"
             ]
           },
           "configurations": {
             "production": {
               "budgets": [{
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "7mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -101,7 +102,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jspdf/dist/jspdf.es.min.js",
+              "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js",
+              "src/assets/js/utils.js"
+            ]
           }
         }
       }

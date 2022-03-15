@@ -49,22 +49,22 @@
             <!-- Btns -->
             <div class="btns">
                 <app-action-button (clicked)="addBtn()" [icon]="faEdit" [formSelected]="true"
-                    tooltipText="Modificar información" #_addBtn></app-action-button>
+                    tooltipText="Modificar información" [id]="'btn_1'"></app-action-button>
                 <app-action-button (clicked)="modBtn()" [icon]="faKey" [formSelected]="false"
-                    tooltipText="Cambio de contraseña" #_modBtn>
+                    tooltipText="Cambio de contraseña" [id]="'btn_2'">
                 </app-action-button>
             </div>
 
-            <div class="form-container" [ngStyle]="style">
-                <app-info-form #infoForm id="form1" title="Modificar su información" btn_text="Confirmar"
+            <div class="form-container">
+                <app-info-form #infoForm [id]="'form1'" title="Modificar su información" btn_text="Confirmar"
                     [styles]="{showing:true}" [user]="user" (submitEvent)="modInfo($event)"></app-info-form>
-                <app-pass-form #passForm id="form2" title="Cambio de contraseña" btn_text="Modificar"
+                <app-pass-form #passForm [id]="'form2'" title="Cambio de contraseña" btn_text="Modificar"
                     [styles]="{showing:false}" (submitEvent)="changePass($event)">
                 </app-pass-form>
             </div>
         </div>
     </div>
-    
+
     <app-growl #growl></app-growl>
 </ng-container>
 

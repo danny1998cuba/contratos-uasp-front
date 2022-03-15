@@ -85,6 +85,7 @@ export class HomeComponent implements OnInit {
       }
     )
   }
+
   countContsYear() {
     this.contractService.getContratosFiltered({ year: new Date().getFullYear() }).subscribe(
       r => {
@@ -94,15 +95,19 @@ export class HomeComponent implements OnInit {
       }
     )
   }
+
   percentAprob() {
     this.contractService.getContratosFiltered({ aprob: true }).subscribe(
       r => {
         if (!r.error) {
-          this.aprobs = (r.data.length / this.conts) * 100
+          setTimeout(() => {
+            this.aprobs = (r.data.length / this.conts) * 100
+          }, 1000);
         }
       }
     )
   }
+
   countVenc() {
     this.contractService.getContratosFiltered({ x_venc: true }).subscribe(
       r => {

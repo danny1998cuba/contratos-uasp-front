@@ -12,21 +12,25 @@
 <body onload="onLoad()">
   <app-root></app-root>
 
-    <script>
-      function onLoad() {
-        var darkBtn = document.getElementById('dark-btn');
+  <script src="assets/js/utils.js"></script>
+  <script>
+    function onLoad() {
+      var darkBtn = document.getElementById('dark-btn');
 
-        if (localStorage.getItem("theme") == "light") {
-          darkBtn.classList.remove('dark-btn-on');
-          document.body.classList.remove('dark-theme');
-        } else if (localStorage.getItem("theme") == "dark") {
-          darkBtn.classList.add('dark-btn-on');
-          document.body.classList.add('dark-theme');
-        } else {
-          localStorage.setItem("theme", "light");
-        }
+      if (localStorage.getItem("theme") == "light") {
+        darkBtn.classList.remove('dark-btn-on');
+        document.body.classList.remove('dark-theme');
+      } else if (localStorage.getItem("theme") == "dark") {
+        darkBtn.classList.add('dark-btn-on');
+        document.body.classList.add('dark-theme');
+      } else {
+        localStorage.setItem("theme", "light");
       }
-    </script>
+    }
+    
+    resizeFormContainer();
+    window.addEventListener('resize', resizeFormContainer);
+  </script>
 </body>
 
 </html>

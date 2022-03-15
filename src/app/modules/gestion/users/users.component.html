@@ -10,9 +10,9 @@
             <!-- Btns -->
             <div class="btns">
                 <app-action-button (clicked)="addBtn()" [icon]="faPlus" [formSelected]="true"
-                    tooltipText="Agregar usuario nuevo" #_addBtn></app-action-button>
+                    tooltipText="Agregar usuario nuevo" [id]="'btn_1'"></app-action-button>
                 <app-action-button (clicked)="modBtn()" [icon]="faEdit" [formSelected]="false"
-                    [_disabled]="selected==null" tooltipText="Modificar usuario seleccionado" #_modBtn>
+                    [_disabled]="selected==null" tooltipText="Modificar usuario seleccionado" [id]="'btn_2'">
                 </app-action-button>
                 <app-action-button (clicked)="delBtn()" [icon]="faTrash" [formSelected]="false"
                     [_disabled]="selected==null" tooltipText="Eliminar usuario seleccionado"></app-action-button>
@@ -22,11 +22,12 @@
             <p>Usuario seleccionado:</p>
             <p class="selected-prov">{{selected ? (selected | fullName) : (selected | undefined)}}</p>
 
-            <div class="form-container" [ngStyle]="style">
-                <app-form-user title="Nuevo usuario" btn_text="Agregar" id="form1" #addForm
+            <div class="form-container">
+                <app-form-user title="Nuevo usuario" btn_text="Agregar" [id]="'form1'" #addForm
                     (submitEvent)="addProvider($event)" [styles]="{showing:true}" [roles]="roles"></app-form-user>
-                <app-form-user title="Modificar usuario seleccionado" btn_text="Modificar" id="form2" #modForm
-                    (submitEvent)="modProvider($event)" [styles]="{showing:false}" [user]="selected" [roles]="roles" [isMod]="true">
+                <app-form-user title="Modificar usuario seleccionado" btn_text="Modificar" [id]="'form2'" #modForm
+                    (submitEvent)="modProvider($event)" [styles]="{showing:false}" [user]="selected" [roles]="roles"
+                    [isMod]="true">
                 </app-form-user>
             </div>
         </div>
@@ -35,7 +36,7 @@
 
     <app-modal (delete)="delProvider()" type="el usuario" [name]="selected? (selected | fullName) : 'none'" #modal>
     </app-modal>
-    
+
     <app-growl #growl></app-growl>
 </ng-container>
 

@@ -7,6 +7,12 @@ import { FormProvComponent } from './form-prov/form-prov.component';
 import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { ActionButtonComponent, GrowlComponent, ModalComponent } from 'src/app/shared/components';
 
+declare var resizeFormContainer: any;
+declare var common: {
+  add: () => void,
+  mod: () => void
+};
+
 @Component({
   selector: 'app-providers',
   templateUrl: './providers.component.html',
@@ -16,17 +22,13 @@ export class ProvidersComponent implements DoCheck {
 
   // Dafinicion de variables
   public data: Provider[] = []; //Listado de proveedores
-  public style = {  //estilo para el form-container (height ajustable)
-    height: '0px'
-  }
+  
   isLoading = true  //loader
   faPlus = faPlus; faEdit = faEdit; faTrash = faTrash //icons
 
   // Elementos del DOM
   @ViewChild('addForm') form1 !: FormProvComponent;
   @ViewChild('modForm') form2 !: FormProvComponent;
-  @ViewChild('_addBtn') _addBtn !: ActionButtonComponent;
-  @ViewChild('_modBtn') _modBtn !: ActionButtonComponent;
   @ViewChild('modal') modal !: ModalComponent;
   @ViewChild('growl') growl !: GrowlComponent;
 
@@ -40,14 +42,7 @@ export class ProvidersComponent implements DoCheck {
   // Ajustar el form-container cada vez que se produzca un cambio
   ngDoCheck(): void {
     if (this.form1 || this.form2) {
-      this.resizeFormContainer()
-    }
-  }
-
-  resizeFormContainer() {
-    var form = document.querySelector('.form-container form.showing');
-    if (form) {
-      this.style.height = form.scrollHeight + 'px';
+      resizeFormContainer()
     }
   }
 
@@ -129,37 +124,15 @@ export class ProvidersComponent implements DoCheck {
 
   // Funciones de los botones
   addBtn() {
-    this.form1.styles.style = {
-      transform: 'translateX(0px)'
-    }
-    this.form2.styles.style = {
-      transform: 'translateX(0px)'
-    }
-
+    common.add()
     this.form1.styles.showing = true
     this.form2.styles.showing = false
-
-    this._addBtn.formSelected = true
-    this._modBtn.formSelected = false
-
-    this.resizeFormContainer()
   }
 
   modBtn() {
-    this.form1.styles.style = {
-      transform: 'translateX(-110%)'
-    }
-    this.form2.styles.style = {
-      transform: 'translateX(-110%)'
-    }
-
+    common.mod()
     this.form1.styles.showing = false
     this.form2.styles.showing = true
-
-    this._addBtn.formSelected = false
-    this._modBtn.formSelected = true
-
-    this.resizeFormContainer()
   }
 
   delBtn() {
